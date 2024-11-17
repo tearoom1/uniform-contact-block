@@ -3,6 +3,11 @@
 This plugin implements a contact form block using Martin Zurowietz' [`kirby-uniform`](https://github.com/mzur/kirby-uniform) plugin for Kirby.
 The block can be easly added to your blueprints and is fully configurable.
 
+It comes with a simple captcha guard and a spam word guard to prevent spam submissions.
+It also has the uniform honeypot and honeytime guards enabled by default.
+
+The panel block allows adjustments of the labels of the form.
+
 ## Getting started
 
 Use one of the following methods to install & use `tearoom1/uniform-contact-block`:
