@@ -79,6 +79,21 @@ And optional additional configuration for the included plugins. For example:
     ]
 ```
 
+## Styling
+
+The plugin comes with a stylesheet.
+It uses the following css variables that can be overwritten in your own stylesheet.
+
+```css
+--font-family
+--font-size-default
+--font-size-big
+--color-white
+--color-accent
+--color-error
+--gap
+```
+
 ## License
 
 This plugin is licensed under the [MIT License](LICENSE), but **using Kirby in production** requires you to [buy a license](https://getkirby.com/buy).
