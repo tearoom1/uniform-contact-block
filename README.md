@@ -31,7 +31,27 @@ composer require tearoom1/uniform-contact-block
 
 ## Usage
 
+Use the block by adding it to you blueprints fieldsets if they are defined:
+
+```yaml
+fieldsets:
+  - uniform-contact
+```
+
 ### Configuration
+
+You may change certain options from your `config.php` globally:
+
+```php
+return [
+    'tearoom1.uniform-contact-block' => [
+        'fromEmail' => 'mail@example.org',
+        'toEmail' => 'mail@example.org',
+        'fromName' => 'My Name',
+    ],
+];
+```
+
 
 ## License
 
