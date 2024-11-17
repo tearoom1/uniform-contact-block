@@ -28,6 +28,15 @@ composer require tearoom1/uniform-contact-block
 1. Clone or download this repository from github: https://github.com/tearoom1/uniform-contact-block.git
 2. Unzip / Move the folder to `site/plugins`.
 
+## Dependencies
+
+- [Kirby](https://getkirby.com)
+- [Kirby Uniform](https://github.com/mzur/kirby-uniform)
+- [Uniform Simple Captcha](https://codeberg.org/refbw/uniform-simple-captcha)
+- [Uniform Spam Words](https://github.com/tearoom1/uniform-spam-words)
+
+Check the corresponding documentation for further information and required configuration.
+Specifically the uniform.honeytime guard from kirby-uniform is used and needs configuration in your `config.php`
 
 ## Usage
 
@@ -49,9 +58,26 @@ return [
         'toEmail' => 'mail@example.org',
         'fromName' => 'My Name',
     ],
+    'uniform.honeytime' => [
+        'key' => 'base64:your-key-here',
+    ],
+
 ];
 ```
-
+And optional additional configuration for the included plugins. For example:
+```php
+    'simple-captcha' => [ // https://codeberg.org/refbw/uniform-simple-captcha
+        'distort' => false,
+        'textColor' => '#57a514',
+        'bgColor' => '#fff',
+    ],
+    'tearoom1.uniform-spam-words' => [
+        'spamThreshold' => 8,
+        'spamWords' => [
+            10 => ['my important spam word'],
+        ],
+    ]
+```
 
 ## License
 
