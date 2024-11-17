@@ -1,0 +1,38 @@
+name: Uniform Contact Form
+icon: email
+preview: fields
+wysiwyg: true
+tabs:
+  content:
+    fields:
+      nameLabel:
+        label: Name Label
+        type: text
+        default: 'Name'
+        required: true
+      emailLabel:
+        label: Email Label
+        type: text
+        default: 'Email'
+        required: true
+      messageLabel:
+        label: Text Label
+        type: text
+        default: 'Message'
+        required: true
+      captchaLabel:
+        label: Captcha Label
+        type: text
+        default: 'Please solve the captcha'
+        required: true
+      privacyNote:
+        label: Privacy Note
+        type: writer
+        default: 'Please note our <a href="/privacy-policy">privacy policy</a>.'
+        required: true
+      submitLabel:
+        label: Submit Label
+        type: text
+        default: 'Send'
+        required: true
+
