@@ -1,6 +1,6 @@
 {
     "name": "tearoom1/uniform-contact-block",
-    "description": "Kirby plugin for a uniform based contact form",
+    "description": "Kirby plugin for a uniform based contact form block",
     "license": "MIT",
     "type": "kirby-plugin",
     "author": {

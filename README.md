@@ -1,6 +1,7 @@
 # Contact Form Block Plugin for Kirby Uniform
 
 This plugin implements a contact form block using Martin Zurowietz' [`kirby-uniform`](https://github.com/mzur/kirby-uniform) plugin for Kirby.
+The block can be easly added to your blueprints and is fully configurable.
 
 ## Getting started
 
@@ -35,8 +36,12 @@ composer require tearoom1/uniform-contact-block
 - [Uniform Simple Captcha](https://codeberg.org/refbw/uniform-simple-captcha)
 - [Uniform Spam Words](https://github.com/tearoom1/uniform-spam-words)
 
-Check the corresponding documentation for further information and required configuration.
+> Note: Check the corresponding documentation for further information and required configuration.
 Specifically the uniform.honeytime guard from kirby-uniform is used and needs configuration in your `config.php`
+
+## Multi language requirement
+This plugin requires a Kirby multi-language setup. It uses routes that expect the language code as the first segment of the URL.
+It can easily be stripped down to a single language setup by removing the language code from the routes and a few adjustments.
 
 ## Usage
 
