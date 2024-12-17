@@ -74,6 +74,9 @@ return [
 
 ];
 ```
+The encryption key. You can generate one with the command `head -c 32 /dev/urandom | base64` and then append a base64: prefix.
+See also https://kirby-uniform.readthedocs.io/en/latest/guards/honeytime/
+
 And optional additional configuration for the included plugins. For example:
 ```php
     'simple-captcha' => [ // https://codeberg.org/refbw/uniform-simple-captcha
