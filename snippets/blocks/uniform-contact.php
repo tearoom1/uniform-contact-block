@@ -57,7 +57,7 @@ $form = new \Uniform\Form();
             </div>
             <?php if ($form->success()): ?>
                 <div class="uniform-contact__result--success">
-                    <?= $block->successMessage() ?>
+                    <?= t('tearoom1.uniform-contact-block.successMessage') ?>
                 </div>
             <?php elseif (count($form->errors()) > 0): ?>
                 <div class="uniform-contact__result--error">
