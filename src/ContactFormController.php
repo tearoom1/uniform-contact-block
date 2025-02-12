@@ -34,7 +34,7 @@ class ContactFormController
                 ->withoutRedirect();
         }
 
-        if (!option('debug') || $form->data('message') === 'test') {
+        if (!option('debug') || $form->data('message') !== 'test') {
             $form
                 ->simplecaptchaGuard()
                 ->honeypotGuard()
