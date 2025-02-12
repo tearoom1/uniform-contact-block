@@ -34,14 +34,17 @@ class ContactFormController
                 ->withoutRedirect();
         }
 
-        $form
-            ->simplecaptchaGuard()
-            ->honeypotGuard()
-            ->honeytimeGuard([
-                'key' => option('uniform.honeytime.key'),
-            ])
-            ->spamWordsGuard();
-
+        if (!option('debug') || $form->data('message') === 'test') {
+            $form
+                ->simplecaptchaGuard()
+                ->honeypotGuard()
+                ->honeytimeGuard([
+                    'key' => option('uniform.honeytime.key'),
+                ])
+                ->spamWordsGuard();
+        } else {
+            $form->honeypotGuard();
+        }
 
         if (!$form->success()) {
             // Return validation errors.
