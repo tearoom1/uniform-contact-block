@@ -14,12 +14,12 @@ $form = new \Uniform\Form();
     <form id="uniform-contact__form-<?= $block->id() ?>" class="uniform-contact__form"
           action="/<?= $lang ?>/uniform-contact" method="POST">
         <input type="hidden" name="origin" value="<?= $page->url() ?>">
-        <input class="uniform-contact__input uniform-contact__name" name="name" type="text" value="<?= $form->old('name'); ?>"
-               placeholder="<?= $block->nameLabel() ?>">
-        <input class="uniform-contact__input uniform-contact__email" name="email" type="email"
-               value="<?= $form->old('email'); ?>" placeholder="<?= $block->emailLabel() ?>">
-        <textarea class="uniform-contact__input uniform-contact__message" name="message"
-                  rows="4" placeholder="<?= $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
+        <input class="uniform-contact__input uniform-contact__name"
+               name="name" type="text" value="<?= $form->old('name'); ?>" placeholder="<?= $block->nameLabel() ?>">
+        <input class="uniform-contact__input uniform-contact__email"
+               name="email" type="email" value="<?= $form->old('email'); ?>" placeholder="<?= $block->emailLabel() ?>">
+        <textarea class="uniform-contact__input uniform-contact__message" name="message" rows="4"
+                  placeholder="<?= $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
         <?= csrf_field(); ?>
         <?= honeypot_field(); ?>
         <?= honeytime_field(option('uniform.honeytime.key')); ?>
