@@ -55,9 +55,9 @@ class ContactFormController
         $form->emailAction([
             'to' => option('tearoom1.uniform-contact-block.toEmail'),
             'from' => option('tearoom1.uniform-contact-block.fromEmail'),
-            'fromName' => option('tearoom1.uniform-contact-block.fromName'),
+            'fromName' => option('tearoom1.uniform-contact-block.fromName') . ' ' . t('tearoom1.uniform-contact-block.title'),
             'replyTo' => $form->data('email'),
-            'subject' => t('tearoom1.uniform-contact-block.subject'),
+            'subject' => t('tearoom1.uniform-contact-block.subject', $form->data('name')),
         ])
             ->emailAction([
                 // Send the success email to the email address of the submitter.
