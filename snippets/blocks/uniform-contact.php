@@ -51,7 +51,8 @@ $form = new \Uniform\Form();
         <div class="uniform-contact__privacy">
             <?= $block->privacyNote() ?>
         </div>
-        <input class="uniform-contact__submit-btn" type="submit" value="<?= $block->submitLabel() ?>">
+        <button class="uniform-contact__submit-btn" type="submit">
+            <?= $block->submitLabel() ?><button
         <div class="uniform-contact__result">
             <div class="uniform-contact__js-message">
             </div>

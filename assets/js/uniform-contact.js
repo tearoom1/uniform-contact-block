@@ -71,10 +71,12 @@ function contactForm(form) {
     } else {
       handleError(response);
     }
+    form.querySelector('.uniform-contact__submit-btn').disabled = false;
   };
 
   var submit = function (e) {
     e.preventDefault();
+    form.querySelector('.uniform-contact__submit-btn').disabled = true;
     var request = new XMLHttpRequest();
     request.open('POST', e.target.action + '-ajax');
     request.onload = onload;
