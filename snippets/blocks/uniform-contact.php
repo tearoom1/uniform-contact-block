@@ -8,8 +8,6 @@ $lang = $kirby->currentLanguage()->code();
 $form = new \Uniform\Form();
 ?>
 
-<?= css(['media/plugins/tearoom1/uniform-contact-block/css/uniform-contact.css']) ?>
-
 <div class="uniform-contact">
     <form id="uniform-contact__form-<?= $block->id() ?>" class="uniform-contact__form"
           action="/<?= $lang ?>/uniform-contact" method="POST">
@@ -69,4 +67,3 @@ $form = new \Uniform\Form();
     </form>
 </div>
 
-<?= js(['media/plugins/tearoom1/uniform-contact-block/js/uniform-contact.js']) ?>

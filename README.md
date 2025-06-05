@@ -57,6 +57,22 @@ fieldsets:
   - uniform-contact
 ```
 
+Add the javascript to all pages that use this block.
+E.g. in the `footer.php`
+```php
+<?php if ($page->layout()->toBlocks()->hasType('uniform-contact')): ?>
+  <?= js(['media/plugins/tearoom1/uniform-contact-block/js/uniform-contact.js']) ?>
+<?php endif ?>
+```
+And in the `<head>` if you want to use the default css:
+```php
+<?php if ($page->layout()->toBlocks()->hasType('uniform-contact')): ?>
+  <?= css(['media/plugins/tearoom1/uniform-contact-block/css/uniform-contact.css']) ?>
+<?php endif ?>
+```
+
+> Note: In this example the blocks are assumed to be in the `layout` field. You may have to adjust this code to your needs.
+
 ### Configuration
 
 You may change certain options from your `config.php` globally:
@@ -94,7 +110,7 @@ And optional additional configuration for the included plugins. For example:
 
 ## Styling
 
-The plugin comes with a stylesheet.
+In case you are using the default stylesheet, you can adjust the styling.
 It uses the following css variables that can be overwritten in your own stylesheet.
 
 ```css
