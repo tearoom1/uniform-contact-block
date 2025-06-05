@@ -71,12 +71,14 @@ function contactForm(form) {
     } else {
       handleError(response);
     }
-    form.querySelector('.uniform-contact__submit-btn').disabled = false;
+    var submitBtn = form.querySelector('.uniform-contact__submit-btn');
+    submitBtn.classList.remove('is-loading'); // Remove loading class
   };
 
   var submit = function (e) {
     e.preventDefault();
-    form.querySelector('.uniform-contact__submit-btn').disabled = true;
+    var submitBtn = form.querySelector('.uniform-contact__submit-btn');
+    submitBtn.classList.add('is-loading'); // Add loading class
     var request = new XMLHttpRequest();
     request.open('POST', e.target.action + '-ajax');
     request.onload = onload;

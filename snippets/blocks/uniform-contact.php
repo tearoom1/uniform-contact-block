@@ -13,10 +13,12 @@ $form = new \Uniform\Form();
           action="/<?= $lang ?>/uniform-contact" method="POST">
         <input type="hidden" name="origin" value="<?= $page->url() ?>">
         <input class="uniform-contact__input uniform-contact__name"
-               name="name" type="text" value="<?= $form->old('name'); ?>" placeholder="<?= $block->nameLabel() ?>">
+               name="name" type="text" required value="<?= $form->old('name'); ?>"
+               placeholder="<?= $block->nameLabel() ?>">
         <input class="uniform-contact__input uniform-contact__email"
-               name="email" type="email" value="<?= $form->old('email'); ?>" placeholder="<?= $block->emailLabel() ?>">
-        <textarea class="uniform-contact__input uniform-contact__message" name="message" rows="4"
+               name="email" type="email" required value="<?= $form->old('email'); ?>"
+               placeholder="<?= $block->emailLabel() ?>">
+        <textarea class="uniform-contact__input uniform-contact__message" name="message" rows="4" required
                   placeholder="<?= $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
         <?= csrf_field(); ?>
         <?= honeypot_field(); ?>
@@ -37,10 +39,10 @@ $form = new \Uniform\Form();
                     </svg>
                 </a>
             </div>
-            <div class="">
-                <div class="uniform-contact__captcha-label"><?= $block->captchaLabel() ?></div>
-                <?= simpleCaptchaField(null, ['class' => 'uniform-contact__captcha-input']) ?>
-            </div>
+            <?= simpleCaptchaField(null, [
+                'class' => 'uniform-contact__captcha-input',
+                'placeholder' => $block->captchaLabel(),
+                'required']) ?>
         </div>
         <?php
         // add link to privacy policy
@@ -50,7 +52,8 @@ $form = new \Uniform\Form();
             <?= $block->privacyNote() ?>
         </div>
         <button class="uniform-contact__submit-btn" type="submit">
-            <?= $block->submitLabel() ?><button
+            <?= $block->submitLabel() ?>
+        </button>
         <div class="uniform-contact__result">
             <div class="uniform-contact__js-message">
             </div>
