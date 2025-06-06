@@ -76,6 +76,8 @@ You may change certain options from your `config.php` globally:
 ```php
 return [
     'tearoom1.uniform-contact-block' => [
+        'enabled' => true, // default true
+        'alwaysIncludeAssets' => false, // default true
         'fromEmail' => 'mail@example.org',
         'toEmail' => 'mail@example.org',
         'fromName' => 'My Name',
@@ -86,7 +88,10 @@ return [
 
 ];
 ```
-The encryption key. You can generate one with the command `head -c 32 /dev/urandom | base64` and then append a base64: prefix.
+The option `alwaysIncludeAssets` determines whether the `uniform-contact/js` and `uniform-contact/css` snippets are always printing the assets
+or only if the block is present on the page. Determining the presence of the block is a little expensive and may want to be avoided, depending on the setup.
+
+For the honeytime encryption key: You can generate one with the command `head -c 32 /dev/urandom | base64` and then append a base64: prefix.
 See also https://kirby-uniform.readthedocs.io/en/latest/guards/honeytime/
 
 And optional additional configuration for the included plugins. For example:
