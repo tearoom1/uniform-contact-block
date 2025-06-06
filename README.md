@@ -58,20 +58,16 @@ fieldsets:
 ```
 
 Add the javascript to all pages that use this block.
-E.g. in the `footer.php`
+E.g. before the closing body tag in the `footer.php`
 ```php
-<?php if ($page->layout()->toBlocks()->hasType('uniform-contact')): ?>
-  <?= js(['media/plugins/tearoom1/uniform-contact-block/js/uniform-contact.js']) ?>
-<?php endif ?>
+<?php snippet('uniform-contact/js'); ?>
 ```
 And in the `<head>` if you want to use the default css:
 ```php
-<?php if ($page->layout()->toBlocks()->hasType('uniform-contact')): ?>
-  <?= css(['media/plugins/tearoom1/uniform-contact-block/css/uniform-contact.css']) ?>
-<?php endif ?>
+<?php snippet('uniform-contact/css'); ?>
 ```
 
-> Note: In this example the blocks are assumed to be in the `layout` field. You may have to adjust this code to your needs.
+> Note: The snippets assume that the blocks are assumed to be in a `layout` field. You may have to adjust this code to your needs.
 
 ### Configuration
 

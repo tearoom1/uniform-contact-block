@@ -1,7 +1,8 @@
 <?php
 
 load([
-    'TearoomOne\\UniformContactBlock\\ContactFormController' => 'src/ContactFormController.php'
+    'TearoomOne\\UniformContactBlock\\ContactFormController' => 'src/ContactFormController.php',
+    'TearoomOne\\UniformContactBlock\\UniformContactUtils' => 'src/UniformContactUtils.php'
 ], __DIR__);
 
 use TearoomOne\UniformContactBlock\ContactFormController;
@@ -12,6 +13,8 @@ Kirby::plugin('tearoom1/uniform-contact-block', [
     ],
     'snippets' => [
         'blocks/uniform-contact' => __DIR__ . '/snippets/blocks/uniform-contact.php',
+        'uniform-contact/css' => __DIR__ . '/snippets/css.php',
+        'uniform-contact/js' => __DIR__ . '/snippets/js.php',
     ],
     'templates' => [
         'emails/success_response_en' => __DIR__ . '/templates/emails/success_response_en.php',
