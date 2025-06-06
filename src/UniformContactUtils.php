@@ -9,9 +9,7 @@ class UniformContactUtils
         $bpFields = $page->blueprint()->fields();
         foreach ($page->content()->fields() as $field) {
             if (isset($bpFields[$field->key()])
-                && ($bpFields[$field->key()]['type'] === 'blocks'
-                    || $bpFields[$field->key()]['type'] === 'layout'
-                    || $bpFields[$field->key()]['type'] === 'object')
+                && in_array($bpFields[$field->key()]['type'], ['blocks', 'layout', 'object'])
                 && $field->toBlocks()->hasType('uniform-contact')) {
                 if ($assetTyoe === 'css') {
                     echo css(['media/plugins/tearoom1/uniform-contact-block/css/uniform-contact.css']);
