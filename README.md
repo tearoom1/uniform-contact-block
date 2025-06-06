@@ -67,7 +67,7 @@ And in the `<head>` if you want to use the default css:
 <?php snippet('uniform-contact/css'); ?>
 ```
 
-> Note: The snippets assume that the blocks are assumed to be in a `layout` field. You may have to adjust this code to your needs.
+> Note: The snippets automatically load the asset if the block is used within a layout or blocks or object type field. There may be cases where this does not work. In this case you may have to load the assets manually.
 
 ### Configuration
 
