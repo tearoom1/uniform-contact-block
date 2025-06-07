@@ -52,12 +52,17 @@ class ContactFormController
         }
 
         // If validation and guards passed, execute the action.
+        $name = $form->data('name', '', false);
+        $subject = I18n::template('tearoom1.uniform-contact-block.subject', null, [
+            'name' => $name
+        ]);
         $form->emailAction([
             'to' => option('tearoom1.uniform-contact-block.toEmail'),
             'from' => option('tearoom1.uniform-contact-block.fromEmail'),
             'fromName' => option('tearoom1.uniform-contact-block.fromName') . ' ' . t('tearoom1.uniform-contact-block.title'),
             'replyTo' => $form->data('email'),
-            'subject' => t('tearoom1.uniform-contact-block.subject', $form->data('name')),
+            'subject' => $subject,
+            'escapeHtml' => false
         ])
             ->emailAction([
                 // Send the success email to the email address of the submitter.
@@ -68,6 +73,7 @@ class ContactFormController
                 'subject' => t('tearoom1.uniform-contact-block.subject_submitter'),
                 // Use a template for the email body (see below).
                 'template' => 'success_response_' . $lang,
+                'escapeHtml' => false
             ]);
 
         if (!$ajax) {
