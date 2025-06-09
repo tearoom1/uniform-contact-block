@@ -8,25 +8,25 @@ $lang = $kirby->currentLanguage()->code();
 $form = new \Uniform\Form();
 ?>
 
-<div class="uniform-contact">
-    <form id="uniform-contact__form-<?= $block->id() ?>" class="uniform-contact__form"
-          action="/<?= $lang ?>/uniform-contact" method="POST">
-        <input type="hidden" name="origin" value="<?= $page->url() ?>">
-        <input class="uniform-contact__input uniform-contact__name"
-               pattern="[^\s]{3,}"
-               title="<?= $block->nameLabel() ?> must be at least 3 characters"
-               name="name" type="text" required value="<?= $form->old('name'); ?>"
-               placeholder="<?= $block->nameLabel() ?>">
-        <input class="uniform-contact__input uniform-contact__email"
-               pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-               title="<?= $block->emailLabel() ?> must be a valid email address"
-               name="email" type="email" required value="<?= $form->old('email'); ?>"
-               placeholder="<?= $block->emailLabel() ?>">
-        <textarea class="uniform-contact__input uniform-contact__message" name="message" rows="4" required
-                  placeholder="<?= $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
-        <?= csrf_field(); ?>
-        <?= honeypot_field(); ?>
-        <?= honeytime_field(option('uniform.honeytime.key')); ?>
+<form id="uniform-contact__form-<?= $block->id() ?>" class="uniform-contact__form"
+      action="/<?= $lang ?>/uniform-contact" method="POST">
+    <?= csrf_field(); ?>
+    <?= honeypot_field(); ?>
+    <?= honeytime_field(option('uniform.honeytime.key')); ?>
+    <input type="hidden" name="origin" value="<?= $page->url() ?>">
+    <input class="uniform-contact__input uniform-contact__name"
+           pattern="[^\s]{3,}"
+           title="<?= $block->nameLabel() ?> must be at least 3 characters"
+           name="name" type="text" required value="<?= $form->old('name'); ?>"
+           placeholder="<?= $block->nameLabel() ?>">
+    <input class="uniform-contact__input uniform-contact__email"
+           pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+           title="<?= $block->emailLabel() ?> must be a valid email address"
+           name="email" type="email" required value="<?= $form->old('email'); ?>"
+           placeholder="<?= $block->emailLabel() ?>">
+    <textarea class="uniform-contact__input uniform-contact__message" name="message" rows="4" required
+              placeholder="<?= $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
+    <div class="uniform-contact__last_block">
         <div class="uniform-contact__captcha">
             <div class="uniform-contact__captcha-wrapper">
                 <div class="uniform-contact__captcha-image">
@@ -61,19 +61,19 @@ $form = new \Uniform\Form();
         <button class="uniform-contact__submit-btn" type="submit">
             <?= $block->submitLabel() ?>
         </button>
-        <div class="uniform-contact__result">
-            <div class="uniform-contact__js-message">
-            </div>
-            <?php if ($form->success()): ?>
-                <div class="uniform-contact__result--success">
-                    <?= t('tearoom1.uniform-contact-block.successMessage') ?>
-                </div>
-            <?php elseif (count($form->errors()) > 0): ?>
-                <div class="uniform-contact__result--error">
-                    <?php snippet('uniform/errors', ['form' => $form]); ?>
-                </div>
-            <?php endif; ?>
+    </div>
+    <div class="uniform-contact__result">
+        <div class="uniform-contact__js-message">
         </div>
-    </form>
-</div>
+        <?php if ($form->success()): ?>
+            <div class="uniform-contact__result--success">
+                <?= t('tearoom1.uniform-contact-block.successMessage') ?>
+            </div>
+        <?php elseif (count($form->errors()) > 0): ?>
+            <div class="uniform-contact__result--error">
+                <?php snippet('uniform/errors', ['form' => $form]); ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</form>
 

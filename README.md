@@ -115,13 +115,17 @@ In case you are using the default stylesheet, you can adjust the styling.
 It uses the following css variables that can be overwritten in your own stylesheet.
 
 ```css
---font-size-default
---font-size-big
---color-white
---color-accent
---color-error
---color-warning
---gap
+.uniform-contact__form {
+  --column-width /* determines the grid column width, default 300px, set it to 100% for a one column layout */
+  --layout-style /* determines the layout style, default is a more wide layout, set it to 0 to get a more compact layout. only works with limited column-width.*/
+  --font-size-default
+  --font-size-big
+  --color-white
+  --color-accent
+  --color-error
+  --color-warning
+  --gap
+}
 ```
 
 ## License

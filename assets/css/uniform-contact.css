@@ -3,25 +3,15 @@
   left: -9999px;
 }
 
-.uniform-contact {
+.uniform-contact__form {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(var(--column-width, 350px), 1fr));
+  border-radius: 1rem;
   gap: var(--gap, 1rem);
 
   .uniform-contact__title {
     margin-bottom: calc(var(--gap, 1rem) * 2);
-  }
-
-  .uniform-contact__form {
-    width: 100%;
-    max-width: 400px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 1rem;
-    text-align: left;
-    gap: var(--gap, 1rem);
   }
 
   .uniform-contact__input {
@@ -49,6 +39,16 @@
 
   .uniform-contact__input:user-invalid, .uniform-contact__input.error {
     outline: 2px solid var(--color-error, #d15f69);
+  }
+
+  .uniform-contact__last_block {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap, 1rem);
+  }
+
+  .uniform-contact__message, .uniform-contact__last_block {
+    grid-column: var(--layout-style, 1) / -1;
   }
 
   .uniform-contact__captcha {
@@ -81,6 +81,7 @@
     margin-top: 0.3rem;
     margin-bottom: 0.5rem;
     font-size: 90%;
+    text-align: left;
   }
 
   .uniform-contact__result {
@@ -130,9 +131,9 @@
 
   .uniform-contact__submit-btn.is-loading {
     position: relative;
-    background: var(--color-accent, #63c38a);
+    background-color: var(--color-accent, #63c38a);
+    color: transparent;
     pointer-events: none;
-    transition: background 0.5s;
   }
 
   .uniform-contact__submit-btn.is-loading::after {
@@ -148,6 +149,10 @@
     border: 2px solid var(--color-white, #fff);
     border-top-color: var(--color-accent, #63c38a);
     animation: spinner 1s linear infinite;
+  }
+
+  .uniform-contact__result {
+    grid-column: 1/-1;
   }
 }
 
