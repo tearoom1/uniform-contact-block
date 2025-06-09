@@ -13,9 +13,13 @@ $form = new \Uniform\Form();
           action="/<?= $lang ?>/uniform-contact" method="POST">
         <input type="hidden" name="origin" value="<?= $page->url() ?>">
         <input class="uniform-contact__input uniform-contact__name"
+               pattern="[^\s]{3,}"
+               title="<?= $block->nameLabel() ?> must be at least 3 characters"
                name="name" type="text" required value="<?= $form->old('name'); ?>"
                placeholder="<?= $block->nameLabel() ?>">
         <input class="uniform-contact__input uniform-contact__email"
+               pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+               title="<?= $block->emailLabel() ?> must be a valid email address"
                name="email" type="email" required value="<?= $form->old('email'); ?>"
                placeholder="<?= $block->emailLabel() ?>">
         <textarea class="uniform-contact__input uniform-contact__message" name="message" rows="4" required
@@ -26,7 +30,9 @@ $form = new \Uniform\Form();
         <div class="uniform-contact__captcha">
             <div class="uniform-contact__captcha-wrapper">
                 <div class="uniform-contact__captcha-image">
-                    <?= simpleCaptcha(['class' => 'uniform-contact__captcha-img', 'title' => 'solve me!']) ?>
+                    <?= simpleCaptcha([
+                        'class' => 'uniform-contact__captcha-img',
+                        'title' => 'Solve me!']) ?>
                 </div>
                 <a class="uniform-contact__captcha-reload">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
@@ -40,8 +46,9 @@ $form = new \Uniform\Form();
                 </a>
             </div>
             <?= simpleCaptchaField(null, [
-                'class' => 'uniform-contact__captcha-input',
+                'class' => 'uniform-contact__input uniform-contact__captcha-input',
                 'placeholder' => $block->captchaLabel(),
+                'pattern' => '[^\s]{5}',
                 'required']) ?>
         </div>
         <?php

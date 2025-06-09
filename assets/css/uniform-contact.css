@@ -8,20 +8,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  > * {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  input, input::placeholder, textarea, textarea::placeholder {
-    font-family: var(--font-family, inherit), sans-serif;
-    font-size: var(--font-size-default, inherit);
-  }
-
-  input.error, textarea.error {
-    border: 1px solid var(--color-error, #d15f69);
-  }
+  gap: var(--gap, 1rem);
 
   .uniform-contact__title {
     margin-bottom: calc(var(--gap, 1rem) * 2);
@@ -37,14 +24,32 @@
     gap: var(--gap, 1rem);
   }
 
-  .uniform-contact__input, .uniform-contact__captcha-input {
+  .uniform-contact__input {
+    font: inherit;
+    font-size: var(--font-size-default, inherit);
+    color: inherit;
+    outline: 1px solid #999;
     width: 100%;
     padding: 1rem;
-    border: 1px solid #999;
     border-radius: 0.5rem;
     background-color: var(--color-white, #fff);
   }
 
+  .uniform-contact__input:focus {
+    outline: 2px solid var(--color-accent, #999);
+  }
+
+  .uniform-contact__input:valid:not(:placeholder-shown):focus {
+    outline: 2px solid var(--color-accent, #6ed15f);
+  }
+
+  .uniform-contact__input:invalid:not(:placeholder-shown):focus {
+    outline: 2px solid var(--color-warning, #d1925f);
+  }
+
+  .uniform-contact__input:user-invalid, .uniform-contact__input.error {
+    outline: 2px solid var(--color-error, #d15f69);
+  }
 
   .uniform-contact__captcha {
     width: 100%;
@@ -104,7 +109,7 @@
   .uniform-contact__submit-btn {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid var(--color-accent, #63c38a);
+    outline: 2px solid var(--color-accent, #63c38a);
     border-radius: 1.2rem;
     cursor: pointer;
     transition: all 0.5s;

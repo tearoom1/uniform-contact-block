@@ -89,7 +89,7 @@ return [
 ];
 ```
 The option `alwaysIncludeAssets` determines whether the `uniform-contact/js` and `uniform-contact/css` snippets are always printing the assets
-or only if the block is present on the page. Determining the presence of the block is a little expensive and may want to be avoided, depending on the setup.
+or only if the block is present on the page. Determining the presence of the block is a little expensive logic and may want to be avoided, depending on the setup.
 
 For the honeytime encryption key: You can generate one with the command `head -c 32 /dev/urandom | base64` and then append a base64: prefix.
 See also https://kirby-uniform.readthedocs.io/en/latest/guards/honeytime/
@@ -115,12 +115,12 @@ In case you are using the default stylesheet, you can adjust the styling.
 It uses the following css variables that can be overwritten in your own stylesheet.
 
 ```css
---font-family
 --font-size-default
 --font-size-big
 --color-white
 --color-accent
 --color-error
+--color-warning
 --gap
 ```
 
