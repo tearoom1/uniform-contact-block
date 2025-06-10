@@ -8,25 +8,53 @@ $lang = $kirby->currentLanguage()->code();
 $form = new \Uniform\Form();
 ?>
 
-<form id="uniform-contact__form-<?= $block->id() ?>" class="uniform-contact__form"
+<form id="uniform-contact__form-<?= $block->id() ?>"
+      class="uniform-contact__form uniform-contact__layout--<?= $block->layout() ?>"
       action="/<?= $lang ?>/uniform-contact" method="POST">
     <?= csrf_field(); ?>
     <?= honeypot_field(); ?>
     <?= honeytime_field(option('uniform.honeytime.key')); ?>
     <input type="hidden" name="origin" value="<?= $page->url() ?>">
-    <input class="uniform-contact__input uniform-contact__name"
-           pattern="[^\s]{3,}"
-           title="<?= $block->nameLabel() ?> must be at least 3 characters"
-           name="name" type="text" required value="<?= $form->old('name'); ?>"
-           placeholder="<?= $block->nameLabel() ?>">
-    <input class="uniform-contact__input uniform-contact__email"
-           pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-           title="<?= $block->emailLabel() ?> must be a valid email address"
-           name="email" type="email" required value="<?= $form->old('email'); ?>"
-           placeholder="<?= $block->emailLabel() ?>">
-    <textarea class="uniform-contact__input uniform-contact__message" name="message" rows="4" required
-              placeholder="<?= $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
+    <div class="uniform-contact__input-group">
+        <?php $printLabels = $block->printLabels()->toBool();
+        if ($printLabels): ?>
+            <label for="name" class="uniform-contact__label">
+                <span class="uniform-contact__label-text"><?= $block->nameLabel() ?></span>
+            </label>
+        <?php endif ?>
+        <input class="uniform-contact__input uniform-contact__name"
+               pattern="[^\s]{3,}"
+               title="<?= $block->nameLabel() ?> must be at least 3 characters"
+               name="name" type="text" required value="<?= $form->old('name'); ?>"
+               placeholder="<?= $printLabels ? '' : $block->nameLabel() ?>">
+    </div>
+    <div class="uniform-contact__input-group">
+        <?php if ($printLabels): ?>
+            <label for="email" class="uniform-contact__label">
+                <span class="uniform-contact__label-text"><?= $block->emailLabel() ?></span>
+            </label>
+        <?php endif ?>
+        <input class="uniform-contact__input uniform-contact__email"
+               pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+               title="<?= $block->emailLabel() ?> must be a valid email address"
+               name="email" type="email" required value="<?= $form->old('email'); ?>"
+               placeholder="<?= $printLabels ? '' : $block->emailLabel() ?>">
+    </div>
+    <div class="uniform-contact__input-group uniform-contact__message">
+        <?php if ($printLabels): ?>
+            <label for="message" class="uniform-contact__label">
+                <span class="uniform-contact__label-text"><?= $block->messageLabel() ?></span>
+            </label>
+        <?php endif ?>
+        <textarea class="uniform-contact__input" name="message" rows="4" required
+                  placeholder="<?= $printLabels ? '' : $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
+    </div>
     <div class="uniform-contact__last_block">
+        <?php if ($printLabels): ?>
+            <label for="captcha" class="uniform-contact__label">
+                <span class="uniform-contact__label-text"><?= $block->captchaLabel() ?></span>
+            </label>
+        <?php endif ?>
         <div class="uniform-contact__captcha">
             <div class="uniform-contact__captcha-wrapper">
                 <div class="uniform-contact__captcha-image">
@@ -47,7 +75,7 @@ $form = new \Uniform\Form();
             </div>
             <?= simpleCaptchaField(null, [
                 'class' => 'uniform-contact__input uniform-contact__captcha-input',
-                'placeholder' => $block->captchaLabel(),
+                'placeholder' => $printLabels ? '' : $block->captchaLabel(),
                 'pattern' => '[^\s]{5}',
                 'required']) ?>
         </div>
