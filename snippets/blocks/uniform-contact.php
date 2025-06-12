@@ -4,6 +4,9 @@
  * @var \Kirby\Cms\Site $site
  * @var \Kirby\Cms\App $kirby
  */
+if (!option('tearoom1.uniform-contact-block.enabled', true)) {
+    return;
+}
 $lang = $kirby->currentLanguage()->code();
 $form = new \Uniform\Form();
 ?>

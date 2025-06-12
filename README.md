@@ -72,8 +72,7 @@ And in the `<head>` if you want to use the default css:
 <?php snippet('uniform-contact/css'); ?>
 ```
 
-> Note: The snippets automatically load the asset if the block is used within a layout or blocks or object type field.
-> There may be cases where this does not work. In this case you may have to load the assets manually.
+> Note: By default, the snippets always load the assets. See below for more details.
 
 ### Configuration
 
@@ -96,8 +95,8 @@ return [
 ```
 
 The option `alwaysIncludeAssets` determines whether the `uniform-contact/js` and `uniform-contact/css` snippets are
-always printing the assets
-or only if the block is present on the page. Determining the presence of the block is a little expensive logic and may
+always printing the assets or only if the block is present on the page.
+Determining the presence of the block is a little expensive logic and may
 want to be avoided, depending on the setup.
 
 For the honeytime encryption key: You can generate one with the command `head -c 32 /dev/urandom | base64` and then

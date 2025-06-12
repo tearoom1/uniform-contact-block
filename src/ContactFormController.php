@@ -10,6 +10,10 @@ class ContactFormController
     public static function contactFormSend($lang, $ajax = false): array
     {
 
+        if (!option('tearoom1.uniform-contact-block.enabled', true)) {
+            return [['message' => 'This plugin is disabled'], 400];
+        }
+
         // tell kirby to use lang
         I18n::$locale = $lang;
 
