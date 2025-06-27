@@ -35,7 +35,10 @@ function contactForm(form) {
     const errors = [];
     for (const key in response) {
       if (!response.hasOwnProperty(key)) continue;
-      if (fields.hasOwnProperty(key)) fields[key].classList.add('error');
+      if (fields.hasOwnProperty(key)) {
+        fields[key].classList.add('error');
+        fields[key].focus();
+      }
       if (response[key] instanceof Array){
         Array.prototype.push.apply(errors, response[key]);
       } else {

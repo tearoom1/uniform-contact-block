@@ -125,7 +125,7 @@
   }
 
   .uniform-contact__input.error {
-    outline: 2px solid var(--cf-color-error);
+    outline: 2px solid var(--cf-color-error) !important;
   }
 
   .uniform-contact__last_block {
