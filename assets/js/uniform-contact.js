@@ -6,16 +6,22 @@ function flashMessage(div) {
 }
 
 function contactForm(form) {
-  var message = form.querySelector('.uniform-contact__js-message');
-  var fields = {};
+  const successClose = form.querySelector('.uniform-contact__js-close');
+  successClose.addEventListener('click', function (e) {
+    e.preventDefault();
+    form.querySelector('.uniform-contact__js-message-modal').classList.add('uniform-contact__js-hidden');
+  });
+  const successMessage = form.querySelector('.uniform-contact__js-success');
+  const errorMessage = form.querySelector('.uniform-contact__js-error');
+  const fields = {};
   form.querySelectorAll('[name]').forEach(function (field) {
     fields[field.name] = field;
   });
 
-  var reloadButton = form.querySelector('.uniform-contact__captcha-reload');
+  const reloadButton = form.querySelector('.uniform-contact__captcha-reload');
   reloadButton.addEventListener('click', function (e) {
     e.preventDefault();
-    var captcha = form.querySelector('.uniform-contact__captcha-image');
+    const captcha = form.querySelector('.uniform-contact__captcha-image');
     fetch('/uniform-contact-captcha').then(function (response) {
       return response.text();
     }).then(function (text) {
@@ -25,9 +31,9 @@ function contactForm(form) {
 
   // Displays all error messages and adds 'error' classes to the form fields with
   // failed validation.
-  var handleError = function (response) {
-    var errors = [];
-    for (var key in response) {
+  const handleError = function (response) {
+    const errors = [];
+    for (const key in response) {
       if (!response.hasOwnProperty(key)) continue;
       if (fields.hasOwnProperty(key)) fields[key].classList.add('error');
       if (response[key] instanceof Array){
@@ -36,32 +42,36 @@ function contactForm(form) {
         errors.push(response[key]);
       }
     }
-    message.classList.remove('uniform-contact__result--success');
-    message.classList.add('uniform-contact__result--error');
-    message.innerHTML = errors.join('<br>');
-    flashMessage(message);
+    successMessage.innerHTML = '';
+    successMessage.classList.remove('uniform-contact__result--success');
+    errorMessage.classList.add('uniform-contact__result--error');
+    errorMessage.innerHTML = errors.join('<br>');
+    flashMessage(errorMessage);
   }
 
-  var onload = function (e) {
-    var response = JSON.parse(e.target.response);
+  const onload = function (e) {
+    const response = JSON.parse(e.target.response);
     if (e.target.status === 200) {
-      var messages = [];
-      for (var key in response) {
+      const messages = [];
+      for (const key in response) {
         if (!response.hasOwnProperty(key)) continue;
         Array.prototype.push.apply(messages, response[key]);
       }
-      message.classList.remove('uniform-contact__result--error');
-      message.classList.add('uniform-contact__result--success');
-      message.innerHTML = messages.join('<br>');
-      flashMessage(message);
+      errorMessage.innerHTML = '';
+      errorMessage.classList.remove('uniform-contact__result--error');
+      successMessage.classList.add('uniform-contact__result--success');
+      successMessage.innerHTML = messages.join('<br>');
+      flashMessage(successMessage);
+      form.querySelector('.uniform-contact__js-message-modal').classList.remove('uniform-contact__js-hidden');
 
-      var text = form.querySelector('.uniform-contact__message');
-      text.value = '';
-      var captchaInput = form.querySelector('.uniform-contact__captcha-input');
+      form.querySelectorAll('.uniform-contact__input').forEach(function (input) {
+        input.value = '';
+      });
+      const captchaInput = form.querySelector('.uniform-contact__captcha-input');
       captchaInput.value = '';
 
       // reload the captcha
-      var captcha = form.querySelector('.uniform-contact__captcha-image');
+      const captcha = form.querySelector('.uniform-contact__captcha-image');
 
       fetch('/uniform-contact-captcha').then(function (response) {
         return response.text();
@@ -71,20 +81,20 @@ function contactForm(form) {
     } else {
       handleError(response);
     }
-    var submitBtn = form.querySelector('.uniform-contact__submit-btn');
+    const submitBtn = form.querySelector('.uniform-contact__submit-btn');
     submitBtn.classList.remove('is-loading'); // Remove loading class
   };
 
   var submit = function (e) {
     e.preventDefault();
-    var submitBtn = form.querySelector('.uniform-contact__submit-btn');
+    const submitBtn = form.querySelector('.uniform-contact__submit-btn');
     submitBtn.classList.add('is-loading'); // Add loading class
-    var request = new XMLHttpRequest();
+    const request = new XMLHttpRequest();
     request.open('POST', e.target.action + '-ajax');
     request.onload = onload;
     request.send(new FormData(e.target));
     // Remove all 'error' classes of a possible previously failed validation.
-    for (var key in fields) {
+    for (const key in fields) {
       if (!fields.hasOwnProperty(key)) continue;
       fields[key].classList.remove('error');
     }
@@ -93,7 +103,7 @@ function contactForm(form) {
 }
 
 window.addEventListener('load', function () {
-  var forms = document.querySelectorAll('.uniform-contact__form');
+  const forms = document.querySelectorAll('.uniform-contact__form');
   // for each form
   forms.forEach(function (form) {
     contactForm(form);

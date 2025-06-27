@@ -3,7 +3,19 @@
   left: -9999px;
 }
 
-.uniform-contact__form {
+.uniform-contact__container {
+  position: relative;
+  width: 100%;
+
+  --cf-color-success: var(--color-success, #2f9f35);
+  --cf-color-warning: var(--color-warning, #c87911);
+  --cf-color-error: var(--color-error, #b5414b);
+  --cf-color-accent: var(--color-accent, #4d74bc);
+  --cf-color-white: var(--color-white, #fff);
+  --cf-color-background: var(--color-background, #fff);
+  --cf-color-gray: var(--color-gray, #aaa);
+  --cf-color-font: var(--color-font, #333);
+
   --grid-layout-gap: var(--gap, 1rem);
   --grid-column-count: 2;
   --grid-item--min-width: 350px;
@@ -11,6 +23,57 @@
   --gap-count: calc(var(--grid-column-count) - 1);
   --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
   --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
+
+  .uniform-contact__form.uniform-contact__layout--one-column {
+    --grid-column-count: 1;
+  }
+
+  .uniform-contact__form.uniform-contact__layout--two-column {
+    --grid-column-count: 2;
+
+    .uniform-contact__message, .uniform-contact__last_block {
+      grid-column: unset;
+    }
+  }
+}
+
+.uniform-contact__js-message-modal {
+  position: absolute;
+  display: grid;
+  transition: visibility 0s, opacity 0.5s linear;
+  background: var(--cf-color-background);
+  inset: -5px;
+  width: calc(100% + 10px);
+  height: calc(100% + 10px);
+  place-items: center;
+  border-radius: 1rem;
+  border: 2px solid var(--cf-color-success);
+  z-index: 2;
+
+  .uniform-contact__js-close {
+    padding: 1rem 2rem;
+    outline: 2px solid var(--cf-color-success);
+    border-radius: 1.2rem;
+    cursor: pointer;
+    transition: all 0.5s;
+    color: var(--cf-color-success);
+    background-color: var(--cf-color-background);
+  }
+
+  .uniform-contact__js-close:hover {
+    color: var(--cf-color-white);
+    background-color: var(--cf-color-success);
+  }
+}
+
+.uniform-contact__js-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+
+.uniform-contact__form {
 
   width: 100%;
   border-radius: 1rem;
@@ -22,20 +85,6 @@
   .uniform-contact__message, .uniform-contact__last_block {
     grid-column: 1 / -1;
   }
-}
-
-.uniform-contact__form.uniform-contact__layout--one-column {
-  --grid-column-count: 1;
-}
-
-.uniform-contact__form.uniform-contact__layout--two-column {
-  --grid-column-count: 2;
-  .uniform-contact__message, .uniform-contact__last_block {
-    grid-column: unset;
-  }
-}
-
-.uniform-contact__form {
 
   label {
     text-align: left;
@@ -56,27 +105,27 @@
     font: inherit;
     font-size: var(--font-size-default, inherit);
     color: inherit;
-    outline: 1px solid #999;
+    outline: 1px solid var(--cf-color-gray);
     width: 100%;
     padding: 1rem;
     border-radius: 0.5rem;
-    background-color: var(--color-white, #fff);
+    background-color: var(--cf-color-background);
   }
 
   .uniform-contact__input:focus {
-    outline: 2px solid var(--color-accent, #999);
+    outline: 2px solid var(--cf-color-accent);
   }
 
   .uniform-contact__input:valid:not(:placeholder-shown):focus {
-    outline: 2px solid var(--color-accent, #6ed15f);
+    outline: 2px solid var(--cf-color-success);
   }
 
   .uniform-contact__input:invalid:not(:placeholder-shown):focus {
-    outline: 2px solid var(--color-warning, #d1925f);
+    outline: 2px solid var(--cf-color-warning);
   }
 
-  .uniform-contact__input:user-invalid, .uniform-contact__input.error {
-    outline: 2px solid var(--color-error, #d15f69);
+  .uniform-contact__input.error {
+    outline: 2px solid var(--cf-color-error);
   }
 
   .uniform-contact__last_block {
@@ -126,16 +175,16 @@
   }
 
   .uniform-contact__result--success {
-    background-color: var(--color-accent, #63c38a);
-    color: var(--color-white, #fff);
+    background-color: var(--cf-color-accent);
+    color: var(--cf-color-white);
     padding: 1rem;
     border-radius: 1rem;
     transition: background-color 0.5s;
   }
 
   .uniform-contact__result--error {
-    background-color: var(--color-error, #d15f69);
-    color: var(--color-white, #fff);
+    background-color: var(--cf-color-error);
+    color: var(--cf-color-white);
     padding: 1rem;
     border-radius: 1rem;
     transition: background-color 0.5s;
@@ -144,28 +193,27 @@
   .uniform-contact__submit-btn {
     width: 100%;
     padding: 0.5rem;
-    outline: 2px solid var(--color-accent, #63c38a);
+    outline: 2px solid var(--cf-color-accent);
     border-radius: 1.2rem;
     cursor: pointer;
     transition: all 0.5s;
     font-size: var(--font-size-big, inherit);
-    color: var(--color-accent, #63c38a);
-    background-color: var(--color-white, #fff);
+    color: var(--cf-color-accent);
+    background-color: var(--cf-color-background);
+  }
 
-    :hover {
-      background-color: var(--color-accent, #63c38a);
-      color: var(--color-white, #fff);
-    }
+  .uniform-contact__submit-btn:focus {
+    outline: 4px solid var(--cf-color-accent);
   }
 
   .uniform-contact__submit-btn:hover {
-    background-color: var(--color-accent, #63c38a);
-    color: var(--color-white, #fff);
+    color: var(--cf-color-white);
+    background-color: var(--cf-color-accent);
   }
 
   .uniform-contact__submit-btn.is-loading {
     position: relative;
-    background-color: var(--color-accent, #63c38a);
+    background-color: var(--cf-color-accent);
     color: transparent;
     pointer-events: none;
   }
@@ -180,8 +228,8 @@
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;
-    border: 2px solid var(--color-white, #fff);
-    border-top-color: var(--color-accent, #63c38a);
+    border: 2px solid var(--cf-color-background);
+    border-top-color: var(--cf-color-accent);
     animation: spinner 1s linear infinite;
   }
 
