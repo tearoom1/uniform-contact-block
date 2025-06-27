@@ -56,7 +56,7 @@
     outline: 2px solid var(--cf-color-success);
     border-radius: 1.2rem;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     color: var(--cf-color-success);
     background-color: var(--cf-color-background);
   }
@@ -65,11 +65,15 @@
     color: var(--cf-color-white);
     background-color: var(--cf-color-success);
   }
+
+  .uniform-contact__js-close:focus {
+    outline: 3px solid var(--cf-color-accent);
+  }
 }
 
 .uniform-contact__js-hidden {
   visibility: hidden;
-  opacity: 0;
+  opacity: 0.3;
 }
 
 
@@ -196,14 +200,14 @@
     outline: 2px solid var(--cf-color-accent);
     border-radius: 1.2rem;
     cursor: pointer;
-    transition: all 0.5s;
+    transition: background-color 0.5s, color 0.5s;
     font-size: var(--font-size-big, inherit);
     color: var(--cf-color-accent);
     background-color: var(--cf-color-background);
   }
 
   .uniform-contact__submit-btn:focus {
-    outline: 4px solid var(--cf-color-accent);
+    outline: 3px solid var(--cf-color-accent);
   }
 
   .uniform-contact__submit-btn:hover {

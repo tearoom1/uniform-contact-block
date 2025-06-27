@@ -66,6 +66,7 @@ function contactForm(form) {
       successMessage.innerHTML = messages.join('<br>');
       flashMessage(successMessage);
       form.querySelector('.uniform-contact__js-message-modal').classList.remove('uniform-contact__js-hidden');
+      successClose.focus();
 
       form.querySelectorAll('.uniform-contact__input').forEach(function (input) {
         input.value = '';
