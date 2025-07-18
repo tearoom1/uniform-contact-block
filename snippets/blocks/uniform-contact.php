@@ -13,7 +13,8 @@ $form = new \Uniform\Form();
 <div class="uniform-contact__container">
     <form id="uniform-contact__form-<?= $block->id() ?>"
           class="uniform-contact__form uniform-contact__layout--<?= $block->layout() ?>"
-          action="/<?= $lang ?>/uniform-contact" method="POST">
+          action="/<?= $lang ?>/uniform-contact" method="POST"
+    <?=option('tearoom1.uniform-contact-block.formBrowserValidate', 'validate')?>>
         <div class="uniform-contact__js-message-modal uniform-contact__js-hidden">
             <div class="uniform-contact__js-success"><?= t('tearoom1.uniform-contact-block.successMessage') ?></div>
             <button class="uniform-contact__js-close">
@@ -32,9 +33,11 @@ $form = new \Uniform\Form();
                 </label>
             <?php endif ?>
             <input class="uniform-contact__input uniform-contact__name"
-                   pattern="[^\s]{3,}"
+                   pattern="<?=option('tearoom1.uniform-contact-block.formNamePattern', '.*')?>"
                    title="<?= $block->nameLabel() ?> must be at least 3 characters"
-                   name="name" type="text" required value="<?= $form->old('name'); ?>"
+                   name="name" type="text" value="<?= $form->old('name'); ?>"
+                <?=r(option('tearoom1.uniform-contact-block.formNameRequired', false), 'required')?>
+                   autocomplete="name"
                    placeholder="<?= $printLabels ? '' : $block->nameLabel() ?>">
         </div>
         <div class="uniform-contact__input-group">
@@ -44,9 +47,11 @@ $form = new \Uniform\Form();
                 </label>
             <?php endif ?>
             <input class="uniform-contact__input uniform-contact__email"
-                   pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
+                   pattern="<?=option('tearoom1.uniform-contact-block.formEmailPattern', '.*')?>"
                    title="<?= $block->emailLabel() ?> must be a valid email address"
                    name="email" type="email" required value="<?= $form->old('email'); ?>"
+                <?=r(option('tearoom1.uniform-contact-block.formEmailRequired', false), 'required')?>
+                   autocomplete="email"
                    placeholder="<?= $printLabels ? '' : $block->emailLabel() ?>">
         </div>
         <div class="uniform-contact__input-group uniform-contact__message">
@@ -55,8 +60,9 @@ $form = new \Uniform\Form();
                     <span class="uniform-contact__label-text"><?= $block->messageLabel() ?></span>
                 </label>
             <?php endif ?>
-            <textarea class="uniform-contact__input" name="message" rows="4" required
-                      placeholder="<?= $printLabels ? '' : $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
+            <textarea class="uniform-contact__input" name="message" rows="4"
+                <?=r(option('tearoom1.uniform-contact-block.formMessageRequired', false), 'required')?>
+                placeholder="<?= $printLabels ? '' : $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
         </div>
         <div class="uniform-contact__last_block">
             <?php if ($printLabels): ?>

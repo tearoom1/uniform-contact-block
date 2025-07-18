@@ -8,6 +8,19 @@ load([
 use TearoomOne\UniformContactBlock\ContactFormController;
 
 Kirby::plugin('tearoom1/uniform-contact-block', [
+    'options' => [
+        'enabled' => true,
+        'alwaysIncludeAssets' => true,
+        'fromEmail' => '',
+        'toEmail' => '',
+        'fromName' => '',
+        'formBrowserValidate' => 'validate',
+        'formNameRequired' => true,
+        'formEmailRequired' => true,
+        'formMessageRequired' => true,
+        'formNamePattern' => '[^\s]{3,}',
+        'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
+    ],
     'blueprints' => [
         'blocks/uniform-contact' => __DIR__ . '/blueprints/blocks/uniform-contact.yml',
     ],

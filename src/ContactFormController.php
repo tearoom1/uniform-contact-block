@@ -19,15 +19,15 @@ class ContactFormController
 
         $form = new Form([
             'name' => [
-                'rules' => ['required'],
+                'rules' => r(option('tearoom1.uniform-contact-block.formNameRequired', false), ['required']),
                 'message' => t('tearoom1.uniform-contact-block.name.required'),
             ],
             'email' => [
-                'rules' => ['required', 'email'],
+                'rules' => r(option('tearoom1.uniform-contact-block.formEmailRequired', false), ['required', 'email']),
                 'message' => t('tearoom1.uniform-contact-block.email.required'),
             ],
             'message' => [
-                'rules' => ['required'],
+                'rules' => r(option('tearoom1.uniform-contact-block.formMessageRequired', false), ['required']),
                 'message' => t('tearoom1.uniform-contact-block.message.required'),
             ],
         ]);

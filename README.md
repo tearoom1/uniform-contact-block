@@ -82,10 +82,16 @@ You may change certain options from your `config.php` globally:
 return [
     'tearoom1.uniform-contact-block' => [
         'enabled' => true, // default true
-        'alwaysIncludeAssets' => false, // default true
+        'alwaysIncludeAssets' => true, // default true
         'fromEmail' => 'mail@example.org',
         'toEmail' => 'mail@example.org',
         'fromName' => 'My Name',
+        'formBrowserValidate' => 'validate',
+        'formNameRequired' => true,
+        'formEmailRequired' => true,
+        'formMessageRequired' => true,
+        'formNamePattern' => '[^\s]{3,}',
+        'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
     ],
     'uniform.honeytime' => [
         'key' => 'base64:your-key-here',
