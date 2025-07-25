@@ -114,8 +114,15 @@ And optional additional configuration for the included plugins. For example:
 ```php
     'simple-captcha' => [ // https://codeberg.org/refbw/uniform-simple-captcha
         'distort' => false,
+        'interpolate' => false,
+        'applyEffects' => false,
+        'applyNoise' => false,
+        'applyPostEffects' => false,
+        'applyScatterEffect' => false,
         'textColor' => '#57a514',
         'bgColor' => '#fff',
+        'width' => 200,
+        'height' => 50,
     ],
     'tearoom1.uniform-spam-words' => [
         'spamThreshold' => 8,

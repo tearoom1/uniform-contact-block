@@ -23,7 +23,11 @@ $form = new \Uniform\Form();
         </div>
         <?= csrf_field(); ?>
         <?= honeypot_field(); ?>
-        <?= honeytime_field(option('uniform.honeytime.key')); ?>
+        <?php
+        $honeyTimeKey = option('uniform.honeytime.key');
+        if ($honeyTimeKey) {
+            echo honeytime_field($honeyTimeKey);
+        }?>
         <input type="hidden" name="origin" value="<?= $page->url() ?>">
         <div class="uniform-contact__input-group">
             <?php $printLabels = $block->printLabels()->toBool();

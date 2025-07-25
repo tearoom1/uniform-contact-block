@@ -18,7 +18,7 @@
 
   --grid-layout-gap: var(--gap, 1rem);
   --grid-column-count: 2;
-  --grid-item--min-width: 350px;
+  --grid-item--min-width: 250px;
 
   --gap-count: calc(var(--grid-column-count) - 1);
   --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
@@ -149,8 +149,11 @@
     @media (max-width: 575px) {
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.5rem;
     }
+  }
+
+  .uniform-contact__captcha-img{
+    border-radius: 0.5rem;
   }
 
   .uniform-contact__captcha-wrapper {
@@ -158,6 +161,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    gap: var(--gap, 1rem);
   }
 
   .uniform-contact__captcha-input {
