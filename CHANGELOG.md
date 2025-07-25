@@ -1,3 +1,10 @@
+## [2.4.2](https://github.com/tearoom1/uniform-contact-block/compare/v2.4.1...v2.4.2) (2025-07-25)
+
+
+### Bug Fixes
+
+* better default layout, prevent error when no honey time key is present and some readme updates ([07e906d](https://github.com/tearoom1/uniform-contact-block/commit/07e906d6f06ab25b9bf5d428fd7f523a6fee992e))
+
 ## [2.4.1](https://github.com/tearoom1/uniform-contact-block/compare/v2.4.0...v2.4.1) (2025-07-21)
 
 
@@ -16,6 +23,4 @@
 ## [2.3.2](https://github.com/tearoom1/uniform-contact-block/compare/v2.3.1...v2.3.2) (2025-07-18)
 
 ## [2.3.1](https://github.com/tearoom1/uniform-contact-block/compare/v2.3.0...v2.3.1) (2025-06-27)
-
-## [2.3.0](https://github.com/tearoom1/uniform-contact-block/compare/v2.2.2...v2.3.0) (2025-06-10)
 
