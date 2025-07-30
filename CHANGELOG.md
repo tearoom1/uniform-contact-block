@@ -1,3 +1,10 @@
+## [2.4.3](https://github.com/tearoom1/uniform-contact-block/compare/v2.4.2...v2.4.3) (2025-07-30)
+
+
+### Bug Fixes
+
+* readme ([26c031b](https://github.com/tearoom1/uniform-contact-block/commit/26c031ba103d855e79fc6b1e5be549830d56a06c))
+
 ## [2.4.2](https://github.com/tearoom1/uniform-contact-block/compare/v2.4.1...v2.4.2) (2025-07-25)
 
 
@@ -21,6 +28,4 @@
 * Added conventional commits. ([3956726](https://github.com/tearoom1/uniform-contact-block/commit/395672655c97c6eeac338fee7f20675c8999862b))
 
 ## [2.3.2](https://github.com/tearoom1/uniform-contact-block/compare/v2.3.1...v2.3.2) (2025-07-18)
-
-## [2.3.1](https://github.com/tearoom1/uniform-contact-block/compare/v2.3.0...v2.3.1) (2025-06-27)
 
