@@ -202,26 +202,26 @@
     width: 100%;
     padding: 0.5rem;
     outline: 2px solid var(--cf-color-accent);
-    border-radius: 1.2rem;
+    border-radius: 0.5rem;
     cursor: pointer;
     transition: background-color 0.5s, color 0.5s;
     font-size: var(--font-size-big, inherit);
+    color: var(--cf-color-background);
+    background-color: var(--cf-color-accent);
+  }
+
+  .uniform-contact__submit-btn:focus {
+    outline: 3px solid var(--cf-color-background);
+  }
+
+  .uniform-contact__submit-btn:hover {
     color: var(--cf-color-accent);
     background-color: var(--cf-color-background);
   }
 
-  .uniform-contact__submit-btn:focus {
-    outline: 3px solid var(--cf-color-accent);
-  }
-
-  .uniform-contact__submit-btn:hover {
-    color: var(--cf-color-white);
-    background-color: var(--cf-color-accent);
-  }
-
   .uniform-contact__submit-btn.is-loading {
     position: relative;
-    background-color: var(--cf-color-accent);
+    background-color: var(--cf-color-background);
     color: transparent;
     pointer-events: none;
   }
