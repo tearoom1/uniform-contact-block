@@ -11,6 +11,8 @@ The panel block allows adjustments of the labels of the form.
 
 [![Screenshot](screenshot.jpg)](https://github.com/tearoom1/kirby-content-watch)
 
+***
+
 ## Getting started
 
 Use one of the following methods to install & use `tearoom1/uniform-contact-block`:
