@@ -11,10 +11,11 @@
   --cf-color-warning: var(--color-warning, #c87911);
   --cf-color-error: var(--color-error, #b5414b);
   --cf-color-accent: var(--color-accent, #4d74bc);
-  --cf-color-white: var(--color-white, #fff);
   --cf-color-background: var(--color-background, #fff);
-  --cf-color-gray: var(--color-gray, #aaa);
+  --cf-color-outline: var(--color-outline, #aaa);
   --cf-color-font: var(--color-font, #333);
+  --cf-btn-color-accent: var(--btn-color-accent, var(--color-accent, #4d74bc));
+  --cf-btn-color-background: var(--btn-color-background, var(--color-background, #fff));
 
   --grid-layout-gap: var(--gap, 1rem);
   --grid-column-count: 2;
@@ -62,7 +63,7 @@
   }
 
   .uniform-contact__js-close:hover {
-    color: var(--cf-color-white);
+    color: var(--cf-color-background);
     background-color: var(--cf-color-success);
   }
 
@@ -109,7 +110,7 @@
     font: inherit;
     font-size: var(--font-size-default, inherit);
     color: inherit;
-    outline: 1px solid var(--cf-color-gray);
+    outline: 1px solid var(--cf-color-outline);
     width: 100%;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -184,7 +185,7 @@
 
   .uniform-contact__result--success {
     background-color: var(--cf-color-accent);
-    color: var(--cf-color-white);
+    color: var(--cf-color-background);
     padding: 1rem;
     border-radius: 1rem;
     transition: background-color 0.5s;
@@ -192,7 +193,7 @@
 
   .uniform-contact__result--error {
     background-color: var(--cf-color-error);
-    color: var(--cf-color-white);
+    color: var(--cf-color-background);
     padding: 1rem;
     border-radius: 1rem;
     transition: background-color 0.5s;
@@ -202,12 +203,12 @@
     width: 100%;
     padding: 0.5rem;
     outline: 2px solid var(--cf-color-accent);
-    border-radius: 0.5rem;
+    border-radius: var(--btn-border-radius, 0.5rem);
     cursor: pointer;
     transition: background-color 0.5s, color 0.5s;
     font-size: var(--font-size-big, inherit);
-    color: var(--cf-color-background);
-    background-color: var(--cf-color-accent);
+    color: var(--cf-btn-color-background);
+    background-color: var(--cf-btn-color-accent);
   }
 
   .uniform-contact__submit-btn:focus {

@@ -144,10 +144,15 @@ It uses the following css variables that can be overwritten in your own styleshe
 ```css
 --font-size-default
 --font-size-big
---color-white
 --color-accent
+--color-background
+--color-outline
+--color-success
 --color-error
 --color-warning
+--btn-color-accent
+--btn-color-background
+--btn-border-radius
 --gap
 ```
 
