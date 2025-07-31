@@ -95,6 +95,7 @@ $form = new \Uniform\Form();
                 <?= simpleCaptchaField(null, [
                     'class' => 'uniform-contact__input uniform-contact__captcha-input',
                     'placeholder' => $printLabels ? '' : $block->captchaLabel(),
+                    'type' => 'text',
                     'pattern' => '[^\s]{5}',
                     'required']) ?>
             </div>
