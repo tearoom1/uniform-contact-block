@@ -1,3 +1,14 @@
+## [3.0.0](https://github.com/tearoom1/uniform-contact-block/compare/v2.5.1...v3.0.0) (2025-07-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* changed css variables and fixed column layout
+
+### Features
+
+* changed css variables and fixed column layout ([efa79a9](https://github.com/tearoom1/uniform-contact-block/commit/efa79a9f6a2a7a773e5898fea406f93fea6f0a5b))
+
 ## [2.5.1](https://github.com/tearoom1/uniform-contact-block/compare/v2.5.0...v2.5.1) (2025-07-31)
 
 
@@ -25,11 +36,4 @@
 ### Bug Fixes
 
 * better default layout, prevent error when no honey time key is present and some readme updates ([07e906d](https://github.com/tearoom1/uniform-contact-block/commit/07e906d6f06ab25b9bf5d428fd7f523a6fee992e))
-
-## [2.4.1](https://github.com/tearoom1/uniform-contact-block/compare/v2.4.0...v2.4.1) (2025-07-21)
-
-
-### Bug Fixes
-
-* fixed versions ([d222274](https://github.com/tearoom1/uniform-contact-block/commit/d2222745d2b208dc639693771cda73efd3c4762c))
 
