@@ -142,6 +142,7 @@ In case you are using the default stylesheet, you can adjust the styling.
 It uses the following css variables that can be overwritten in your own stylesheet.
 
 ```css
+--font-size-small
 --font-size-default
 --font-size-big
 --color-accent
