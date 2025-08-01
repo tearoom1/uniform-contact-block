@@ -14,7 +14,7 @@
   --cf-default-color-background: #fff;
   --cf-default-color-spinner: #fff;
 
-  --cf-default-border-radius: 0.5rem;
+  --cf-default-border-radius: 1rem;
   --cf-default-gap: 1rem;
 
 
@@ -75,18 +75,22 @@
   }
 
   .uniform-contact__input:focus {
+    outline-color: var(--cf-color-accent, var(--cf-default-color-accent));
     border-color: var(--cf-color-accent, var(--cf-default-color-accent));
   }
 
   .uniform-contact__input:valid:not(:placeholder-shown):focus {
+    outline-color: var(--cf-color-success, var(--cf-default-color-success));
     border-color: var(--cf-color-success, var(--cf-default-color-success));
   }
 
   .uniform-contact__input:invalid:not(:placeholder-shown):focus {
+    outline-color: var(--cf-color-warning, var(--cf-default-color-warning));
     border-color: var(--cf-color-warning, var(--cf-default-color-warning));
   }
 
   .uniform-contact__input.error {
+    outline-color: var(--cf-color-error, var(--cf-default-color-error)) !important;
     border-color: var(--cf-color-error, var(--cf-default-color-error)) !important;
   }
 
@@ -162,19 +166,16 @@
   }
 
   .uniform-contact__result--error {
-    width: 50%;
     display: inline-block;
     color: white;
     background: var(--cf-color-error, var(--cf-default-color-error));
     border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
     text-align: center;
-    padding: 0.5rem 1rem;
+    padding: max(var(--cf-gap, var(--cf-default-gap)) / 2, 10px) max(var(--cf-gap, var(--cf-default-gap)), 20px);
   }
 
   .uniform-contact__submit-btn {
     width: 100%;
-    padding: 0.5rem;
-    cursor: pointer;
   }
 
   .uniform-contact__submit-btn.is-loading {
