@@ -127,16 +127,17 @@
   }
 
   .uniform-contact__privacy {
-    margin-top: 0.3rem;
-    margin-bottom: 0.5rem;
+    margin-top: calc(var(--cf-gap, var(--cf-default-gap)) * 0.3);
+    margin-bottom: calc(var(--cf-gap, var(--cf-default-gap)) * 0.3);
     text-align: left;
+    font-size: 90%;
   }
 
   .uniform-contact__result {
     width: 100%;
     text-align: center;
     transition: all 0.5s;
-    margin-top: 0.5rem;
+    margin-top: calc(var(--cf-gap, var(--cf-default-gap)) * 0.5);
   }
 
   .uniform-contact__js-message-modal {
@@ -162,7 +163,6 @@
   }
 
   .uniform-contact__result--error {
-    width: 50%;
     display: inline-block;
     color: white;
     background: var(--cf-color-error, var(--cf-default-color-error));
