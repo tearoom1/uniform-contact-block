@@ -99,6 +99,7 @@
   }
 
   .uniform-contact__error-message {
+    text-align: start;
     font-size: 80%;
     color: var(--cf-color-error, var(--cf-default-color-error));
     margin-top: calc(var(--cf-border-radius, var(--cf-default-border-radius)) * 0.3);
