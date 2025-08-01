@@ -160,7 +160,6 @@ In case you are using the default stylesheet, you can adjust the styling.
 It uses the following css variables that can be overwritten in your own stylesheet.
 
 ```css
-
 --cf-color-success
 --cf-color-warning
 --cf-color-error
@@ -171,7 +170,12 @@ It uses the following css variables that can be overwritten in your own styleshe
 
 --cf-border-radius
 --cf-gap
+--cf-padding
 ```
+
+Also see the [css](/assets/css/uniform-contact.css) file for the default styling.
+
+You can use the 'basic' theme for a basic styling if you do not have your own form styling.
 
 ## License
 
