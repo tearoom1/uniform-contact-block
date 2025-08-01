@@ -7,21 +7,12 @@
   position: relative;
   width: 100%;
 
-  --cf-default-font-size-small: 0.9rem;
-  --cf-default-font-size-default: 1rem;
-  --cf-default-font-size-big: 1.2rem;
-
   --cf-default-color-success: #2f9f35;
   --cf-default-color-warning: #c87911;
   --cf-default-color-error: #b5414b;
   --cf-default-color-accent: #4d74bc;
   --cf-default-color-background: #fff;
-  --cf-default-color-outline: #aaa;
-  --cf-default-color-font: #333;
-
-  --cf-default-btn-color-accent: #4d74bc;
-  --cf-default-btn-color-background: #fff;
-  --cf-default-btn-border-radius: 0.5rem;
+  --cf-default-color-spinner: #fff;
 
   --cf-default-border-radius: 0.5rem;
   --cf-default-gap: 1rem;
@@ -45,45 +36,6 @@
   }
 }
 
-.uniform-contact__js-message-modal {
-  position: absolute;
-  display: grid;
-  transition: visibility 0s, opacity 0.5s linear;
-  background: var(--cf-color-background, var(--cf-default-color-background));
-  inset: -5px;
-  width: calc(100% + 10px);
-  height: calc(100% + 10px);
-  place-items: center;
-  border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
-  border: 2px solid var(--cf-color-success, var(--cf-default-color-success));
-  z-index: 2;
-
-  .uniform-contact__js-close {
-    padding: 1rem 2rem;
-    outline: 2px solid var(--cf-color-success, var(--cf-default-color-success));
-    border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
-    cursor: pointer;
-    transition: background-color 0.5s, color 0.5s;
-    color: var(--cf-color-success, var(--cf-default-color-success));
-    background-color: var(--cf-color-background, var(--cf-default-color-background));
-  }
-
-  .uniform-contact__js-close:hover {
-    color: var(--cf-color-background, var(--cf-default-color-background));
-    background-color: var(--cf-color-success, var(--cf-default-color-success));
-  }
-
-  .uniform-contact__js-close:focus {
-    outline: 3px solid var(--cf-color-accent, var(--cf-default-color-accent));
-  }
-}
-
-.uniform-contact__js-hidden {
-  visibility: hidden;
-  opacity: 0.3;
-}
-
-
 .uniform-contact__form {
 
   --cf-gap-count: calc(var(--grid-column-count) - 1);
@@ -91,7 +43,6 @@
   --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
 
   width: 100%;
-  border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
 
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
@@ -118,30 +69,25 @@
   .uniform-contact__input {
     height: 100%;
     font: inherit;
-    font-size: var(--cf-font-size-default, var(--cf-default-font-size-default));
     color: inherit;
-    outline: 1px solid var(--cf-color-outline, var(--cf-default-color-outline));
     width: 100%;
-    padding: 1rem;
     margin: 0;
-    border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
-    background-color: var(--cf-color-background, var(--cf-default-color-background));
   }
 
   .uniform-contact__input:focus {
-    outline: 2px solid var(--cf-color-accent, var(--cf-default-color-accent));
+    border-color: var(--cf-color-accent, var(--cf-default-color-accent));
   }
 
   .uniform-contact__input:valid:not(:placeholder-shown):focus {
-    outline: 2px solid var(--cf-color-success, var(--cf-default-color-success));
+    border-color: var(--cf-color-success, var(--cf-default-color-success));
   }
 
   .uniform-contact__input:invalid:not(:placeholder-shown):focus {
-    outline: 2px solid var(--cf-color-warning, var(--cf-default-color-warning));
+    border-color: var(--cf-color-warning, var(--cf-default-color-warning));
   }
 
   .uniform-contact__input.error {
-    outline: 2px solid var(--cf-color-error, var(--cf-default-color-error)) !important;
+    border-color: var(--cf-color-error, var(--cf-default-color-error)) !important;
   }
 
   .uniform-contact__last_block {
@@ -164,7 +110,7 @@
     }
   }
 
-  .uniform-contact__captcha-img {
+  .uniform-contact__captcha-image img {
     border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
   }
 
@@ -183,7 +129,6 @@
   .uniform-contact__privacy {
     margin-top: 0.3rem;
     margin-bottom: 0.5rem;
-    font-size: var(--cf-font-size-small, var(--cf-default-font-size-small));
     text-align: left;
   }
 
@@ -194,46 +139,46 @@
     margin-top: 0.5rem;
   }
 
+  .uniform-contact__js-message-modal {
+    position: absolute;
+    display: grid;
+    transition: visibility 0s, opacity 0.5s linear;
+    background: var(--cf-color-background, var(--cf-default-color-background));
+    inset: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    place-items: center;
+    z-index: 2;
+  }
+
+  .uniform-contact__js-hidden {
+    visibility: hidden;
+    opacity: 0.3;
+  }
+
   .uniform-contact__result--success {
-    background-color: var(--cf-color-accent, var(--cf-default-color-accent));
-    color: var(--cf-color-background, var(--cf-default-color-background));
-    padding: 1rem;
-    border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
-    transition: background-color 0.5s;
+    color: inherit;
+    text-align: center;
   }
 
   .uniform-contact__result--error {
-    background-color: var(--cf-color-error, var(--cf-default-color-error));
-    color: var(--cf-color-background, var(--cf-default-color-background));
-    padding: 1rem;
+    width: 50%;
+    display: inline-block;
+    color: white;
+    background: var(--cf-color-error, var(--cf-default-color-error));
     border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
-    transition: background-color 0.5s;
+    text-align: center;
+    padding: 0.5rem 1rem;
   }
 
   .uniform-contact__submit-btn {
     width: 100%;
     padding: 0.5rem;
-    outline: 2px solid var(--cf-color-accent, var(--cf-default-color-accent));
-    border-radius: var(--cf-btn-border-radius, var(--cf-default-btn-border-radius));
     cursor: pointer;
-    transition: background-color 0.5s, color 0.5s;
-    font-size: var(--cf-font-size-big, var(--cf-default-font-size-big));
-    color: var(--cf-btn-color-background, var(--cf-default-btn-color-background));
-    background-color: var(--cf-btn-color-accent, var(--cf-default-btn-color-accent));
-  }
-
-  .uniform-contact__submit-btn:focus {
-    outline: 3px solid var(--cf-color-background, var(--cf-default-color-background));
-  }
-
-  .uniform-contact__submit-btn:hover {
-    color: var(--cf-color-accent, var(--cf-default-color-accent));
-    background-color: var(--cf-color-background, var(--cf-default-color-background));
   }
 
   .uniform-contact__submit-btn.is-loading {
     position: relative;
-    background-color: var(--cf-color-background, var(--cf-default-color-background));
     color: transparent;
     pointer-events: none;
   }
@@ -248,8 +193,8 @@
     margin-top: -10px;
     margin-left: -10px;
     border-radius: 50%;
-    border: 2px solid var(--cf-color-background, var(--cf-default-color-background));
-    border-top-color: var(--cf-color-accent, var(--cf-default-color-accent));
+    border: 2px solid var(--cf-color-spinner, var(--cf-default-color-spinner));
+    border-top-color: transparent;
     animation: spinner 1s linear infinite;
   }
 

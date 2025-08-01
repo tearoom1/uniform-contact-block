@@ -142,21 +142,14 @@ In case you are using the default stylesheet, you can adjust the styling.
 It uses the following css variables that can be overwritten in your own stylesheet.
 
 ```css
---cf-font-size-small
---cf-font-size-default
---cf-font-size-big
 
 --cf-color-success
 --cf-color-warning
 --cf-color-error
 --cf-color-accent
---cf-color-background
---cf-color-outline
---cf-color-font
 
---cf-btn-color-accent
---cf-btn-color-background
---cf-btn-border-radius
+--cf-color-background /* needed for modal background */
+--cf-color-spinner
 
 --cf-border-radius
 --cf-gap

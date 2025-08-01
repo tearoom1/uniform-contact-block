@@ -42,10 +42,11 @@ class ContactFormController
             $form
                 ->simplecaptchaGuard()
                 ->honeypotGuard()
-                ->honeytimeGuard([
-                    'key' => option('uniform.honeytime.key'),
-                ])
                 ->spamWordsGuard();
+
+            if (option('uniform.honeytime.key') !== null) {
+                $form->honeytimeGuard([ 'key' => option('uniform.honeytime.key') ]);
+            }
         } else {
             $form->honeypotGuard();
         }
