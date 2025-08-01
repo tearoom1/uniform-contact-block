@@ -1,0 +1,416 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "eca8506c303b227422f1fe1d2185dd71",
+    "packages": [
+        {
+            "name": "getkirby/composer-installer",
+            "version": "1.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/getkirby/composer-installer.git",
+                "reference": "c98ece30bfba45be7ce457e1102d1b169d922f3d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/getkirby/composer-installer/zipball/c98ece30bfba45be7ce457e1102d1b169d922f3d",
+                "reference": "c98ece30bfba45be7ce457e1102d1b169d922f3d",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0 || ^2.0"
+            },
+            "require-dev": {
+                "composer/composer": "^1.8 || ^2.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Kirby\\ComposerInstaller\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Kirby\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Kirby's custom Composer installer for the Kirby CMS and for Kirby plugins",
+            "homepage": "https://getkirby.com",
+            "support": {
+                "issues": "https://github.com/getkirby/composer-installer/issues",
+                "source": "https://github.com/getkirby/composer-installer/tree/1.2.1"
+            },
+            "funding": [
+                {
+                    "url": "https://getkirby.com/buy",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-12-28T12:54:39+00:00"
+        },
+        {
+            "name": "mzur/kirby-flash",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mzur/kirby-flash.git",
+                "reference": "298df11e3adc8d872db8cd48ef3736c3cbdb6c6e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mzur/kirby-flash/zipball/298df11e3adc8d872db8cd48ef3736c3cbdb6c6e",
+                "reference": "298df11e3adc8d872db8cd48ef3736c3cbdb6c6e",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.2"
+            },
+            "require-dev": {
+                "getkirby/cms": "^3.0",
+                "mzur/kirby-defuse-session": "^1.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Jevets\\Kirby\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Jamesson",
+                    "email": "steve@evendev.com"
+                },
+                {
+                    "name": "Martin Zurowietz",
+                    "email": "martin@the-inspired-ones.de"
+                }
+            ],
+            "description": "Stores data in the session for the next request. Data is removed after the next page load.",
+            "keywords": [
+                "flash",
+                "kirby",
+                "session"
+            ],
+            "support": {
+                "issues": "https://github.com/mzur/kirby-flash/issues",
+                "source": "https://github.com/mzur/kirby-flash/tree/v2.2.0"
+            },
+            "time": "2023-01-05T18:59:28+00:00"
+        },
+        {
+            "name": "mzur/kirby-form",
+            "version": "v3.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mzur/kirby-form.git",
+                "reference": "8dc211b321375dbf77c43e1287e9fe0be2762ec0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mzur/kirby-form/zipball/8dc211b321375dbf77c43e1287e9fe0be2762ec0",
+                "reference": "8dc211b321375dbf77c43e1287e9fe0be2762ec0",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.2",
+                "mzur/kirby-flash": "^2.0"
+            },
+            "require-dev": {
+                "getkirby/cms": "^3.0",
+                "mzur/kirby-defuse-session": "^1.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Jevets\\Kirby\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Jamesson",
+                    "email": "steve@evendev.com"
+                },
+                {
+                    "name": "Martin Zurowietz",
+                    "email": "martin@the-inspired-ones.de"
+                }
+            ],
+            "description": "A form helper for Kirby-based websites, using the Post/Redirect/Get pattern.",
+            "keywords": [
+                "form",
+                "kirby"
+            ],
+            "support": {
+                "issues": "https://github.com/mzur/kirby-form/issues",
+                "source": "https://github.com/mzur/kirby-form/tree/v3.3.0"
+            },
+            "time": "2023-02-19T09:51:38+00:00"
+        },
+        {
+            "name": "mzur/kirby-uniform",
+            "version": "v5.6.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mzur/kirby-uniform.git",
+                "reference": "b11d8299a0c4aa47b7bcd415610ee9ae76a83d7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mzur/kirby-uniform/zipball/b11d8299a0c4aa47b7bcd415610ee9ae76a83d7e",
+                "reference": "b11d8299a0c4aa47b7bcd415610ee9ae76a83d7e",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.2",
+                "mzur/kirby-form": "^3.0"
+            },
+            "require-dev": {
+                "getkirby/cms": "^3.5 || ^4.0 || 5.0.0-rc.1",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Uniform\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Martin Zurowietz",
+                    "email": "martin@the-inspired-ones.de"
+                }
+            ],
+            "description": "A versatile Kirby plugin to handle web form actions.",
+            "keywords": [
+                "form",
+                "kirby"
+            ],
+            "support": {
+                "docs": "http://kirby-uniform.readthedocs.io",
+                "issues": "https://github.com/mzur/kirby-uniform/issues",
+                "source": "https://github.com/mzur/kirby-uniform"
+            },
+            "funding": [
+                {
+                    "url": "https://www.paypal.me/drmzur",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/mzur",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-07-18T08:44:07+00:00"
+        },
+        {
+            "name": "refbw/uniform-simple-captcha",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/S1SYPHOS/uniform-simple-captcha.git",
+                "reference": "199e29c621fc983a0941053815191f78db81df1b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/S1SYPHOS/uniform-simple-captcha/zipball/199e29c621fc983a0941053815191f78db81df1b",
+                "reference": "199e29c621fc983a0941053815191f78db81df1b",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.1",
+                "mzur/kirby-uniform": "^5.0",
+                "s1syphos/php-simple-captcha": "^2.1"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Uniform\\Guards\\SimpleCaptchaGuard\\": "src/Guards/SimpleCaptcha.php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Simple captcha guard for 'mzur/kirby-uniform' & Kirby v3",
+            "support": {
+                "issues": "https://github.com/S1SYPHOS/uniform-simple-captcha/issues",
+                "source": "https://github.com/S1SYPHOS/uniform-simple-captcha/tree/2.1.1"
+            },
+            "time": "2022-05-16T08:49:52+00:00"
+        },
+        {
+            "name": "s1syphos/php-simple-captcha",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/S1SYPHOS/php-simple-captcha.git",
+                "reference": "8ceff4950ef75d5deb4a19bbc8e25012818234d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/S1SYPHOS/php-simple-captcha/zipball/8ceff4950ef75d5deb4a19bbc8e25012818234d9",
+                "reference": "8ceff4950ef75d5deb4a19bbc8e25012818234d9",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "ext-mbstring": "*",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "laravel/pint": "^1.4",
+                "mikey179/vfsstream": "^1.6",
+                "phpunit/phpunit": "^9.5",
+                "vimeo/psalm": "^5.6"
+            },
+            "suggest": {
+                "thiagoalessio/tesseract_ocr": "Provides better results when building against OCR. Requires 'tesseract-ocr' to be installed."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "SimpleCaptcha\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Grégoire Passault",
+                    "email": "g.passault@gmail.com",
+                    "homepage": "http://www.gregwar.com",
+                    "role": "Founder"
+                },
+                {
+                    "name": "Jeremy Livingston",
+                    "email": "jeremy.j.livingston@gmail.com",
+                    "role": "Contributor"
+                },
+                {
+                    "name": "Martin Folkers",
+                    "email": "hello@twobrain.io",
+                    "homepage": "https://twobrain.io",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Simple captcha generator",
+            "homepage": "https://codeberg.org/S1SYPHOS/php-simple-captcha",
+            "keywords": [
+                "anti-bot",
+                "anti-spam",
+                "bot-protection",
+                "captcha",
+                "no-bot",
+                "obfuscation",
+                "security",
+                "spam",
+                "spam-protection"
+            ],
+            "support": {
+                "issues": "https://github.com/S1SYPHOS/php-simple-captcha/issues",
+                "source": "https://github.com/S1SYPHOS/php-simple-captcha/tree/2.3.0"
+            },
+            "time": "2023-02-06T10:52:17+00:00"
+        },
+        {
+            "name": "tearoom1/uniform-spam-words",
+            "version": "1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tearoom1/uniform-spam-words.git",
+                "reference": "68ed7f79fbba6bcb1296a8b484d65ecbcac267ff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tearoom1/uniform-spam-words/zipball/68ed7f79fbba6bcb1296a8b484d65ecbcac267ff",
+                "reference": "68ed7f79fbba6bcb1296a8b484d65ecbcac267ff",
+                "shasum": ""
+            },
+            "require": {
+                "getkirby/composer-installer": "^1.1",
+                "mzur/kirby-uniform": "^5.0"
+            },
+            "require-dev": {
+                "getkirby/cms": "^4.1.0",
+                "phpunit/phpunit": "^11.4.3"
+            },
+            "type": "kirby-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Uniform\\Guards\\SpamWordsGuard\\": "src/guards/SpamWordsGuard.php"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathis Koblin",
+                    "email": "mail@tearoom.one",
+                    "homepage": "https://www.tearoom.one",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "Simple spam guard for 'mzur/kirby-uniform' & Kirby",
+            "keywords": [
+                "form",
+                "kirby"
+            ],
+            "support": {
+                "issues": "https://github.com/tearoom1/uniform-spam-words/issues",
+                "source": "https://github.com/tearoom1/uniform-spam-words/tree/v1.1.7"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/tearoom1",
+                    "type": "buy_me_a_coffee"
+                },
+                {
+                    "url": "https://github.com/tearoom1",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-07-21T12:21:35+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {},
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
+}
