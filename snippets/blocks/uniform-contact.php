@@ -36,13 +36,18 @@ $form = new \Uniform\Form();
                     <span class="uniform-contact__label-text"><?= $block->nameLabel() ?></span>
                 </label>
             <?php endif ?>
-            <input class="uniform-contact__input uniform-contact__name"
+            <input class="uniform-contact__input uniform-contact__name <?= (array_key_exists('name', $form->errors())) ? 'error' : '' ?>"
                    pattern="<?=option('tearoom1.uniform-contact-block.formNamePattern', '.*')?>"
                    title="<?= $block->nameLabel() ?> must be at least 3 characters"
                    name="name" type="text" value="<?= $form->old('name'); ?>"
                 <?=r(option('tearoom1.uniform-contact-block.formNameRequired', false), 'required')?>
                    autocomplete="name"
                    placeholder="<?= $printLabels ? '' : $block->nameLabel() ?>">
+            <?php if (array_key_exists('name', $form->errors())): ?>
+            <div class="uniform-contact__error-message">
+                <?= implode('<br>', $form->errors()['name']) ?>
+            </div>
+            <?php endif ?>
         </div>
         <div class="uniform-contact__input-group">
             <?php if ($printLabels): ?>
@@ -50,13 +55,18 @@ $form = new \Uniform\Form();
                     <span class="uniform-contact__label-text"><?= $block->emailLabel() ?></span>
                 </label>
             <?php endif ?>
-            <input class="uniform-contact__input uniform-contact__email"
+            <input class="uniform-contact__input uniform-contact__email <?= (array_key_exists('email', $form->errors())) ? 'error' : '' ?>"
                    pattern="<?=option('tearoom1.uniform-contact-block.formEmailPattern', '.*')?>"
                    title="<?= $block->emailLabel() ?> must be a valid email address"
                    name="email" type="email" required value="<?= $form->old('email'); ?>"
                 <?=r(option('tearoom1.uniform-contact-block.formEmailRequired', false), 'required')?>
                    autocomplete="email"
                    placeholder="<?= $printLabels ? '' : $block->emailLabel() ?>">
+            <?php if (array_key_exists('email', $form->errors())): ?>
+            <div class="uniform-contact__error-message">
+                <?= implode('<br>', $form->errors()['email']) ?>
+            </div>
+            <?php endif ?>
         </div>
         <div class="uniform-contact__input-group uniform-contact__message">
             <?php if ($printLabels): ?>
@@ -64,9 +74,14 @@ $form = new \Uniform\Form();
                     <span class="uniform-contact__label-text"><?= $block->messageLabel() ?></span>
                 </label>
             <?php endif ?>
-            <textarea class="uniform-contact__input" name="message" rows="4"
+            <textarea class="uniform-contact__input <?= (array_key_exists('message', $form->errors())) ? 'error' : '' ?>" name="message" rows="4"
                 <?=r(option('tearoom1.uniform-contact-block.formMessageRequired', false), 'required')?>
                 placeholder="<?= $printLabels ? '' : $block->messageLabel() ?>"><?= $form->old('message'); ?></textarea>
+            <?php if (array_key_exists('message', $form->errors())): ?>
+            <div class="uniform-contact__error-message">
+                <?= implode('<br>', $form->errors()['message']) ?>
+            </div>
+            <?php endif ?>
         </div>
         <div class="uniform-contact__last_block">
             <?php if ($printLabels): ?>
@@ -92,12 +107,19 @@ $form = new \Uniform\Form();
                         </svg>
                     </a>
                 </div>
+                <div class="uniform-contact__captcha-answer">
                 <?= simpleCaptchaField(null, [
-                    'class' => 'uniform-contact__input uniform-contact__captcha-input',
+                    'class' => 'uniform-contact__input uniform-contact__captcha-input' . ((array_key_exists('captcha', $form->errors())) ? ' error' : ''),
                     'placeholder' => $printLabels ? '' : $block->captchaLabel(),
                     'type' => 'text',
                     'pattern' => '[^\s]{5}',
                     'required']) ?>
+                <?php if (array_key_exists('captcha', $form->errors())): ?>
+                <div class="uniform-contact__error-message uniform-contact__error-message--captcha">
+                    <?= implode('<br>', $form->errors()['captcha']) ?>
+                </div>
+                <?php endif ?>
+                </div>
             </div>
             <?php
             // add link to privacy policy
@@ -109,6 +131,23 @@ $form = new \Uniform\Form();
             <button class="uniform-contact__submit-btn" type="submit">
                 <?= $block->submitLabel() ?>
             </button>
+
+            <?php
+            // Display any general errors not associated with specific fields
+            $generalErrors = array_filter($form->errors(), function($key) {
+                return !in_array($key, ['name', 'email', 'message', 'captcha']);
+            }, ARRAY_FILTER_USE_KEY);
+
+            if (count($generalErrors) > 0):
+            ?>
+            <div class="uniform-contact__general-errors">
+                <?php foreach ($generalErrors as $error): ?>
+                    <div class="uniform-contact__error-message">
+                        <?= implode('<br>', $error) ?>
+                    </div>
+                <?php endforeach ?>
+            </div>
+            <?php endif; ?>
         </div>
         <div class="uniform-contact__result">
             <div class="uniform-contact__js-error">
@@ -116,10 +155,6 @@ $form = new \Uniform\Form();
             <?php if ($form->success()): ?>
                 <div class="uniform-contact__result--success">
                     <?= t('tearoom1.uniform-contact-block.successMessage') ?>
-                </div>
-            <?php elseif (count($form->errors()) > 0): ?>
-                <div class="uniform-contact__result--error">
-                    <?php snippet('uniform/errors', ['form' => $form]); ?>
                 </div>
             <?php endif; ?>
         </div>

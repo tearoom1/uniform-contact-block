@@ -33,6 +33,10 @@
     .uniform-contact__message, .uniform-contact__last_block {
       grid-column: unset;
     }
+
+    .uniform-contact__message textarea {
+      min-height: 150px;
+    }
   }
 }
 
@@ -59,7 +63,7 @@
   .uniform-contact__input-group {
     display: flex;
     flex-direction: column;
-    gap: calc(var(--cf-gap, var(--cf-default-gap)) / 2);
+    height: fit-content;
   }
 
   .uniform-contact__title {
@@ -94,9 +98,22 @@
     border-color: var(--cf-color-error, var(--cf-default-color-error)) !important;
   }
 
+  .uniform-contact__error-message {
+    font-size: 80%;
+    color: var(--cf-color-error, var(--cf-default-color-error));
+    margin-top: calc(var(--cf-border-radius, var(--cf-default-border-radius)) * 0.3);
+    margin-inline-start: calc(var(--cf-border-radius, var(--cf-default-border-radius)) * 0.3);
+  }
+
+  .uniform-contact__general-errors {
+    margin-top: calc(var(--cf-gap, var(--cf-default-gap)) / 2);
+    width: 100%;
+  }
+
   .uniform-contact__last_block {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: start;
     gap: var(--cf-gap, var(--cf-default-gap));
   }
 
@@ -105,13 +122,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: var(--cf-gap, var(--cf-default-gap));
 
     @media (max-width: 575px) {
       flex-direction: column;
       align-items: flex-start;
     }
+  }
+
+  .uniform-contact__captcha-answer {
+    width: 100%;
+    height: fit-content;
   }
 
   .uniform-contact__captcha-image img {

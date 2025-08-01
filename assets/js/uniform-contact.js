@@ -29,27 +29,110 @@ function contactForm(form) {
     });
   });
 
+  // Remove all error messages
+  const clearAllErrorMessages = function() {
+    form.querySelectorAll('.uniform-contact__error-message').forEach(function(errorDiv) {
+      errorDiv.remove();
+    });
+  };
+
   // Displays all error messages and adds 'error' classes to the form fields with
   // failed validation.
   const handleError = function (response) {
-    const errors = [];
+    console.log(response)
+    // Clear any existing error messages first
+    clearAllErrorMessages();
+
+    const generalErrors = [];
+
     for (const key in response) {
       if (!response.hasOwnProperty(key)) continue;
+
       if (fields.hasOwnProperty(key)) {
+        // Add error class to the input field
         fields[key].classList.add('error');
-        fields[key].focus();
-      }
-      if (response[key] instanceof Array){
-        Array.prototype.push.apply(errors, response[key]);
+
+        // Get the parent container (different handling for captcha)
+        let inputGroup = null;
+        if (key === 'simple-captcha') {
+          // Captcha is inside a different structure
+          inputGroup = fields[key].closest('.uniform-contact__captcha-answer');
+        } else {
+          inputGroup = fields[key].closest('.uniform-contact__input-group');
+        }
+
+        if (inputGroup) {
+          const errorDiv = document.createElement('div');
+          errorDiv.className = 'uniform-contact__error-message';
+          if (key === 'simple-captcha') {
+            errorDiv.className += ' uniform-contact__error-message--captcha';
+          }
+
+          // Add the error message(s)
+          if (response[key] instanceof Array) {
+            errorDiv.innerHTML = response[key].join('<br>');
+          } else {
+            errorDiv.innerHTML = response[key];
+          }
+
+          // Check if error message already exists
+          const existingError = inputGroup.querySelector('.uniform-contact__error-message');
+          if (existingError) {
+            inputGroup.replaceChild(errorDiv, existingError);
+          } else {
+            inputGroup.appendChild(errorDiv);
+          }
+
+          // Focus on the first field with error
+          if (document.activeElement !== fields[key]) {
+            fields[key].focus();
+          }
+        }
       } else {
-        errors.push(response[key]);
+        // Handle general errors (not specific to a field)
+        if (response[key] instanceof Array) {
+          Array.prototype.push.apply(generalErrors, response[key]);
+        } else {
+          generalErrors.push(response[key]);
+        }
       }
     }
+
+    // Display general errors
+    if (generalErrors.length > 0) {
+      let generalErrorsContainer = form.querySelector('.uniform-contact__general-errors');
+
+      // If the container doesn't exist, create it
+      if (!generalErrorsContainer) {
+        generalErrorsContainer = document.createElement('div');
+        generalErrorsContainer.className = 'uniform-contact__general-errors';
+        const lastBlock = form.querySelector('.uniform-contact__last_block');
+        if (lastBlock) {
+          lastBlock.appendChild(generalErrorsContainer);
+        }
+      } else {
+        // Clear existing general errors
+        generalErrorsContainer.innerHTML = '';
+      }
+
+      // Add each error message
+      generalErrors.forEach(function(error) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'uniform-contact__error-message';
+        errorDiv.innerHTML = error;
+        generalErrorsContainer.appendChild(errorDiv);
+      });
+    }
+
+    // Clear the success message
     successMessage.innerHTML = '';
     successMessage.classList.remove('uniform-contact__result--success');
-    errorMessage.classList.add('uniform-contact__result--error');
-    errorMessage.innerHTML = errors.join('<br>');
-    flashMessage(errorMessage);
+
+    // Flash the first error message for visibility
+    const firstErrorMessage = form.querySelector('.uniform-contact__error-message');
+    if (firstErrorMessage) {
+      flashMessage(firstErrorMessage);
+    }
   }
 
   const onload = function (e) {
@@ -60,6 +143,7 @@ function contactForm(form) {
         if (!response.hasOwnProperty(key)) continue;
         Array.prototype.push.apply(messages, response[key]);
       }
+      clearAllErrorMessages();
       errorMessage.innerHTML = '';
       errorMessage.classList.remove('uniform-contact__result--error');
       successMessage.classList.add('uniform-contact__result--success');
@@ -102,6 +186,8 @@ function contactForm(form) {
       if (!fields.hasOwnProperty(key)) continue;
       fields[key].classList.remove('error');
     }
+    // Clear all error messages
+    clearAllErrorMessages();
   };
   form.addEventListener('submit', submit);
 }
