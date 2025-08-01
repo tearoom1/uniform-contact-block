@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.1.0...v3.1.1) (2025-08-01)
+
+
+### Bug Fixes
+
+* updated composer and autoloading ([97739ba](https://github.com/tearoom1/uniform-contact-block/commit/97739bab49887693885360f22204d5e6dffca3d2))
+
 ## [3.1.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.0.3...v3.1.0) (2025-08-01)
 
 
@@ -25,15 +32,4 @@
 ### Bug Fixes
 
 * simplified css to allow system css to have a greater effect ([b0e1c80](https://github.com/tearoom1/uniform-contact-block/commit/b0e1c80baf8442e5338a5e88bec65210af39f7d7))
-
-## [3.0.0](https://github.com/tearoom1/uniform-contact-block/compare/v2.5.1...v3.0.0) (2025-07-31)
-
-
-### ⚠ BREAKING CHANGES
-
-* changed css variables and fixed column layout
-
-### Features
-
-* changed css variables and fixed column layout ([efa79a9](https://github.com/tearoom1/uniform-contact-block/commit/efa79a9f6a2a7a773e5898fea406f93fea6f0a5b))
 
