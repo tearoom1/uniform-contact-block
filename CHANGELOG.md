@@ -1,3 +1,10 @@
+## [3.1.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.0.3...v3.1.0) (2025-08-01)
+
+
+### Features
+
+* show error messages next to input fields ([8c25a9d](https://github.com/tearoom1/uniform-contact-block/commit/8c25a9d5b8f0d3417edbfcafa5ee106f9fe6b700))
+
 ## [3.0.3](https://github.com/tearoom1/uniform-contact-block/compare/v3.0.2...v3.0.3) (2025-08-01)
 
 
@@ -29,11 +36,4 @@
 ### Features
 
 * changed css variables and fixed column layout ([efa79a9](https://github.com/tearoom1/uniform-contact-block/commit/efa79a9f6a2a7a773e5898fea406f93fea6f0a5b))
-
-## [2.5.1](https://github.com/tearoom1/uniform-contact-block/compare/v2.5.0...v2.5.1) (2025-07-31)
-
-
-### Bug Fixes
-
-* improved css ([c8e14a9](https://github.com/tearoom1/uniform-contact-block/commit/c8e14a90cbae0370f08c7fae689def909d1064a8))
 
