@@ -17,7 +17,7 @@ Kirby::plugin('tearoom1/uniform-contact-block', [
         'formMessageRequired' => true,
         'formNamePattern' => '[^\s]{3,}',
         'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
-        'theme' => 'basic',
+        'theme' => '',
     ],
     'blueprints' => [
         'blocks/uniform-contact' => __DIR__ . '/blueprints/blocks/uniform-contact.yml',
