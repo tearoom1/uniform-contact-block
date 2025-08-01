@@ -1,3 +1,10 @@
+## [3.2.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.1.1...v3.2.0) (2025-08-01)
+
+
+### Features
+
+* added basic theme and option to remove privacy note ([b117b2c](https://github.com/tearoom1/uniform-contact-block/commit/b117b2c61bfb192ae7193e816478916eef3f9c93))
+
 ## [3.1.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.1.0...v3.1.1) (2025-08-01)
 
 
@@ -25,11 +32,4 @@
 ### Bug Fixes
 
 * cleanup css even more to make it work with more different styles ([c5b5123](https://github.com/tearoom1/uniform-contact-block/commit/c5b5123f6db7984efa63ca5de645646baa538c2f))
-
-## [3.0.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.0.0...v3.0.1) (2025-08-01)
-
-
-### Bug Fixes
-
-* simplified css to allow system css to have a greater effect ([b0e1c80](https://github.com/tearoom1/uniform-contact-block/commit/b0e1c80baf8442e5338a5e88bec65210af39f7d7))
 
