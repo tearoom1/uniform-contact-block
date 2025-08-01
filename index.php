@@ -1,9 +1,6 @@
 <?php
 
-load([
-    'TearoomOne\\UniformContactBlock\\ContactFormController' => 'src/ContactFormController.php',
-    'TearoomOne\\UniformContactBlock\\UniformContactUtils' => 'src/UniformContactUtils.php'
-], __DIR__);
+@include_once __DIR__ . '/vendor/autoload.php';
 
 use TearoomOne\UniformContactBlock\ContactFormController;
 
