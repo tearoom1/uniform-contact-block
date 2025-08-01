@@ -10,7 +10,7 @@ if (!option('tearoom1.uniform-contact-block.enabled', true)) {
 $lang = $kirby->currentLanguage()->code();
 $form = new \Uniform\Form();
 ?>
-<div class="uniform-contact__container">
+<div class="uniform-contact__container uniform-contact__theme--<?= option('tearoom1.uniform-contact-block.theme', 'bare')  ?>">
     <form id="uniform-contact__form-<?= $block->id() ?>"
           class="uniform-contact__form uniform-contact__layout--<?= $block->layout() ?>"
           action="/<?= $lang ?>/uniform-contact" method="POST"
@@ -125,9 +125,11 @@ $form = new \Uniform\Form();
             // add link to privacy policy
 
             ?>
-            <div class="uniform-contact__privacy">
-                <?= $block->privacyNote() ?>
-            </div>
+            <?php if($block->privacyNote()->isNotEmpty()): ?>
+                <div class="uniform-contact__privacy">
+                    <?= $block->privacyNote() ?>
+                </div>
+            <?php endif ?>
             <button class="uniform-contact__submit-btn" type="submit">
                 <?= $block->submitLabel() ?>
             </button>

@@ -54,5 +54,5 @@ tabs:
         label: Privacy Note
         type: writer
         default: 'Please note our <a href="/privacy-policy">privacy policy</a>.'
-        required: true
+        required: false
 

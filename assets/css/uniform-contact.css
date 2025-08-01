@@ -16,7 +16,11 @@
 
   --cf-default-border-radius: 1rem;
   --cf-default-gap: 1rem;
+  --cf-default-padding: 0.5rem;
 
+  --cf-padding-1: var(--cf-padding, var(--cf-default-padding));
+  --cf-padding-2: calc(var(--cf-padding, var(--cf-default-padding)) * 2);
+  --cf-padding-3: calc(var(--cf-padding, var(--cf-default-padding)) * 3);
 
   --grid-layout-gap: var(--cf-gap, var(--cf-default-gap));
   --grid-column-count: 2;
@@ -37,6 +41,51 @@
     .uniform-contact__message textarea {
       min-height: 150px;
     }
+  }
+}
+
+.uniform-contact__theme--basic {
+  label, .uniform-contact__privacy {
+    display: block;
+    margin-inline-start: var(--cf-padding-1);
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="url"],
+  input[type="tel"],
+  input[type="number"],
+  input[type="date"],
+  button[type="submit"],
+  textarea,
+  select {
+    border: 1px solid var(--cf-color-accent, var(--cf-default-color-accent));
+    padding: var(--cf-padding-1) var(--cf-padding-2);
+    border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
+
+    &:focus {
+      border-color: var(--cf-color-accent, var(--cf-default-color-accent));
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+
+  button[type="submit"] {
+    background-color: var(--cf-color-accent, var(--cf-default-color-accent));
+    color: var(--cf-color-background, var(--cf-default-color-background));
+    border: 1px solid var(--cf-color-background, var(--cf-default-color-background));
+    transition: all 0.5s;
+  }
+
+  button[type="submit"]:hover {
+    color: var(--cf-color-accent, var(--cf-default-color-accent));
+    background-color: var(--cf-color-background, var(--cf-default-color-background));
+    border: 1px solid var(--cf-color-accent, var(--cf-default-color-accent));
   }
 }
 
@@ -107,7 +156,7 @@
   }
 
   .uniform-contact__general-errors {
-    margin-top: calc(var(--cf-gap, var(--cf-default-gap)) / 2);
+    margin-top: var(--cf-padding-1);
     width: 100%;
   }
 
@@ -164,7 +213,7 @@
     width: 100%;
     text-align: center;
     transition: all 0.5s;
-    margin-top: calc(var(--cf-gap, var(--cf-default-gap)) * 0.5);
+    margin-top: var(--cf-padding-1);
   }
 
   .uniform-contact__js-message-modal {
@@ -195,7 +244,7 @@
     background: var(--cf-color-error, var(--cf-default-color-error));
     border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
     text-align: center;
-    padding: max(var(--cf-gap, var(--cf-default-gap)) / 2, 10px) max(var(--cf-gap, var(--cf-default-gap)), 20px);
+    padding: max(var(--cf-padding-1), 10px) max(var(--cf-padding-2), 20px);
   }
 
   .uniform-contact__submit-btn {

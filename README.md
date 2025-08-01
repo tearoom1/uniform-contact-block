@@ -96,6 +96,7 @@ return [
         'formMessageRequired' => true,
         'formNamePattern' => '[^\s]{3,}',
         'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
+        'theme' => 'basic', // default no theme, use 'basic' for a default theme
     ],
     'uniform.honeytime' => [
         'key' => 'base64:your-key-here',
@@ -103,6 +104,23 @@ return [
 
 ];
 ```
+### Options
+
+| Option | Default                    | Description                                                             |
+| --- |----------------------------|-------------------------------------------------------------------------|
+| `enabled` | `true`                     | Enable the plugin                                                       |
+| `alwaysIncludeAssets` | `true`                     | Always include the assets, even if the block is not present on the page |
+| `fromEmail` |                            | From email address for the contact form                                 |
+| `toEmail` |                            | To email address for the contact form                                   |
+| `fromName` |                            | From name for the contact form                                          |
+| `formBrowserValidate` | `validate`                 | Browser validate the form, either `validate` or `novalidate`            |
+| `formNameRequired` | `true`                     | Require the name field                                                  |
+| `formEmailRequired` | `true`                     | Require the email field                                                 |
+| `formMessageRequired` | `true`                     | Require the message field                                               |
+| `formNamePattern` | `[^\s]{3,}`                | Pattern for the name field                                              |
+| `formEmailPattern` | `[^\s@]+@[^\s@]+\.[^\s@]+` | Pattern for the email field                                             |
+| `theme` |                            | Set to 'basic' for some basic styling                                   |
+
 
 The option `alwaysIncludeAssets` determines whether the `uniform-contact/js` and `uniform-contact/css` snippets are
 always printing the assets or only if the block is present on the page.
