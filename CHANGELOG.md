@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/tearoom1/uniform-contact-block/compare/v3.0.2...v3.0.3) (2025-08-01)
+
+
+### Bug Fixes
+
+* and another improvement :) ([5d39123](https://github.com/tearoom1/uniform-contact-block/commit/5d39123b764bcf38a2657cb8100d90062c4359fb))
+
 ## [3.0.2](https://github.com/tearoom1/uniform-contact-block/compare/v3.0.1...v3.0.2) (2025-08-01)
 
 
@@ -29,11 +36,4 @@
 ### Bug Fixes
 
 * improved css ([c8e14a9](https://github.com/tearoom1/uniform-contact-block/commit/c8e14a90cbae0370f08c7fae689def909d1064a8))
-
-## [2.5.0](https://github.com/tearoom1/uniform-contact-block/compare/v2.4.3...v2.5.0) (2025-07-30)
-
-
-### Features
-
-* new styles ([93d1d91](https://github.com/tearoom1/uniform-contact-block/commit/93d1d91c6881eae70704b0dac07b263301475daf))
 
