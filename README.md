@@ -1,4 +1,4 @@
-# Contact Form Block Plugin for Kirby Uniform
+# Contact Form Block Plugin for Kirby
 
 This plugin implements a contact form block using Martin Zurowietz' [
 `kirby-uniform`](https://github.com/mzur/kirby-uniform) plugin for Kirby.
@@ -12,6 +12,15 @@ The panel block allows adjustments of the labels of the form.
 [![Screenshot](screenshot.jpg)](https://github.com/tearoom1/kirby-content-watch)
 
 ***
+
+## Features
+
+* Works out of the box with minimal setup
+* Comes with an optional basic theme
+* Choose from 3 layout styles
+* Optional labels and placeholders
+* Works with and without JS
+* Multiple guards already included and mostly ready to go
 
 ## Getting started
 
@@ -104,23 +113,23 @@ return [
 
 ];
 ```
+
 ### Options
 
-| Option | Default                    | Description                                                             |
-| --- |----------------------------|-------------------------------------------------------------------------|
-| `enabled` | `true`                     | Enable the plugin                                                       |
+| Option                | Default                    | Description                                                             |
+|-----------------------|----------------------------|-------------------------------------------------------------------------|
+| `enabled`             | `true`                     | Enable the plugin                                                       |
 | `alwaysIncludeAssets` | `true`                     | Always include the assets, even if the block is not present on the page |
-| `fromEmail` |                            | From email address for the contact form                                 |
-| `toEmail` |                            | To email address for the contact form                                   |
-| `fromName` |                            | From name for the contact form                                          |
+| `fromEmail`           |                            | From email address for the contact form                                 |
+| `toEmail`             |                            | To email address for the contact form                                   |
+| `fromName`            |                            | From name for the contact form                                          |
 | `formBrowserValidate` | `validate`                 | Browser validate the form, either `validate` or `novalidate`            |
-| `formNameRequired` | `true`                     | Require the name field                                                  |
-| `formEmailRequired` | `true`                     | Require the email field                                                 |
+| `formNameRequired`    | `true`                     | Require the name field                                                  |
+| `formEmailRequired`   | `true`                     | Require the email field                                                 |
 | `formMessageRequired` | `true`                     | Require the message field                                               |
-| `formNamePattern` | `[^\s]{3,}`                | Pattern for the name field                                              |
-| `formEmailPattern` | `[^\s@]+@[^\s@]+\.[^\s@]+` | Pattern for the email field                                             |
-| `theme` |                            | Set to 'basic' for some basic styling                                   |
-
+| `formNamePattern`     | `[^\s]{3,}`                | Pattern for the name field                                              |
+| `formEmailPattern`    | `[^\s@]+@[^\s@]+\.[^\s@]+` | Pattern for the email field                                             |
+| `theme`               |                            | Set to 'basic' for some basic styling                                   |
 
 The option `alwaysIncludeAssets` determines whether the `uniform-contact/js` and `uniform-contact/css` snippets are
 always printing the assets or only if the block is present on the page.
@@ -166,7 +175,6 @@ It uses the following css variables that can be overwritten in your own styleshe
 --cf-color-accent
 --cf-color-background
 --cf-color-spinner
-
 --cf-border-radius
 --cf-gap
 --cf-padding
