@@ -6,7 +6,7 @@ function flashMessage(div) {
 }
 
 function contactForm(block) {
-  console.log(block)
+  // console.log(block)
 
   const form = block.querySelector('.uniform-contact__form');
   const confirmationPanel = block.querySelector('.uniform-contact__confirmation');
@@ -50,7 +50,7 @@ function contactForm(block) {
   // Displays all error messages and adds 'error' classes to the form fields with
   // failed validation.
   const handleError = function (response) {
-    console.log(response)
+    // console.log(response)
     // Clear any existing error messages first
     clearAllErrorMessages();
 
