@@ -1,3 +1,10 @@
+## [3.2.4](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.3...v3.2.4) (2025-08-02)
+
+
+### Bug Fixes
+
+* reverted to use class loading in index.php ([a13e67f](https://github.com/tearoom1/uniform-contact-block/commit/a13e67f99dcf3864e674f13d8d319101d9e3997c))
+
 ## [3.2.3](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.2...v3.2.3) (2025-08-02)
 
 
@@ -25,11 +32,4 @@
 ### Features
 
 * added basic theme and option to remove privacy note ([b117b2c](https://github.com/tearoom1/uniform-contact-block/commit/b117b2c61bfb192ae7193e816478916eef3f9c93))
-
-## [3.1.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.1.0...v3.1.1) (2025-08-01)
-
-
-### Bug Fixes
-
-* updated composer and autoloading ([97739ba](https://github.com/tearoom1/uniform-contact-block/commit/97739bab49887693885360f22204d5e6dffca3d2))
 
