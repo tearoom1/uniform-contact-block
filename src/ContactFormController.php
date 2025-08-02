@@ -2,6 +2,7 @@
 
 namespace TearoomOne\UniformContactBlock;
 
+use Kirby\Exception\Exception;
 use Kirby\Toolkit\I18n;
 use Uniform\Form;
 
@@ -32,23 +33,33 @@ class ContactFormController
             ],
         ]);
 
+        if (option('debug')) {
+            if ($form->data('message') === 'error') {
+                throw new Exception('Test Error');
+            } else if ($form->data('message') === 'test') {
+                if (!$ajax) {
+                    $form = new Form();
+                    $form->validate();
+                    $form->done();
+                } else {
+                    return [[], 200];
+                }
+            }
+        }
+
         if ($ajax) {
             // Perform validation and execute guards.
             $form->withoutFlashing()
                 ->withoutRedirect();
         }
 
-        if (!option('debug') || $form->data('message') !== 'test') {
-            $form
-                ->simplecaptchaGuard()
-                ->honeypotGuard()
-                ->spamWordsGuard();
+        $form
+            ->simplecaptchaGuard()
+            ->honeypotGuard()
+            ->spamWordsGuard();
 
-            if (option('uniform.honeytime.key') !== null) {
-                $form->honeytimeGuard([ 'key' => option('uniform.honeytime.key') ]);
-            }
-        } else {
-            $form->honeypotGuard();
+        if (option('uniform.honeytime.key') !== null) {
+            $form->honeytimeGuard(['key' => option('uniform.honeytime.key')]);
         }
 
         if (!$form->success()) {

@@ -5,14 +5,21 @@ function flashMessage(div) {
   }, 200);
 }
 
-function contactForm(form) {
-  const successClose = form.querySelector('.uniform-contact__js-close');
-  successClose.addEventListener('click', function (e) {
+function contactForm(block) {
+  console.log(block)
+
+  const form = block.querySelector('.uniform-contact__form');
+  const confirmationPanel = block.querySelector('.uniform-contact__confirmation');
+  const closeButton = confirmationPanel.querySelector('button');
+  let resultMessageContainer = form.querySelector('.uniform-contact__result');
+  let generalErrorsContainer = resultMessageContainer.querySelector('.uniform-contact__result--error');
+
+  closeButton.addEventListener('click', function (e) {
     e.preventDefault();
-    form.querySelector('.uniform-contact__js-message-modal').classList.add('uniform-contact__js-hidden');
+    confirmationPanel.setAttribute('aria-hidden', 'true');
+    form.setAttribute('aria-hidden', 'false');
   });
-  const successMessage = form.querySelector('.uniform-contact__js-success');
-  const errorMessage = form.querySelector('.uniform-contact__js-error');
+
   const fields = {};
   form.querySelectorAll('[name]').forEach(function (field) {
     fields[field.name] = field;
@@ -31,6 +38,10 @@ function contactForm(form) {
 
   // Remove all error messages
   const clearAllErrorMessages = function() {
+    resultMessageContainer.setAttribute('aria-hidden', 'true');
+    if (generalErrorsContainer) {
+      generalErrorsContainer.innerHTML = '';
+    }
     form.querySelectorAll('.uniform-contact__error-message').forEach(function(errorDiv) {
       errorDiv.remove();
     });
@@ -48,11 +59,18 @@ function contactForm(form) {
     for (const key in response) {
       if (!response.hasOwnProperty(key)) continue;
 
+      let responseValue = response[key];
+
+      if (response.hasOwnProperty("exception")) {
+        generalErrors.push(responseValue);
+        continue;
+      }
+
       if (fields.hasOwnProperty(key)) {
         // Add error class to the input field
         fields[key].classList.add('error');
 
-        // Get the parent container (different handling for captcha)
+        // Get the parent block (different handling for captcha)
         let inputGroup = null;
         if (key === 'simple-captcha') {
           // Captcha is inside a different structure
@@ -69,10 +87,10 @@ function contactForm(form) {
           }
 
           // Add the error message(s)
-          if (response[key] instanceof Array) {
-            errorDiv.innerHTML = response[key].join('<br>');
+          if (responseValue instanceof Array) {
+            errorDiv.innerHTML = responseValue.join('<br>');
           } else {
-            errorDiv.innerHTML = response[key];
+            errorDiv.innerHTML = responseValue;
           }
 
           // Check if error message already exists
@@ -90,26 +108,23 @@ function contactForm(form) {
         }
       } else {
         // Handle general errors (not specific to a field)
-        if (response[key] instanceof Array) {
-          Array.prototype.push.apply(generalErrors, response[key]);
+        if (responseValue instanceof Array) {
+          Array.prototype.push.apply(generalErrors, responseValue);
         } else {
-          generalErrors.push(response[key]);
+          generalErrors.push(responseValue);
         }
       }
     }
 
     // Display general errors
     if (generalErrors.length > 0) {
-      let generalErrorsContainer = form.querySelector('.uniform-contact__general-errors');
+      resultMessageContainer.setAttribute('aria-hidden', 'false');
 
-      // If the container doesn't exist, create it
+      // If the block doesn't exist, create it
       if (!generalErrorsContainer) {
         generalErrorsContainer = document.createElement('div');
-        generalErrorsContainer.className = 'uniform-contact__general-errors';
-        const lastBlock = form.querySelector('.uniform-contact__last_block');
-        if (lastBlock) {
-          lastBlock.appendChild(generalErrorsContainer);
-        }
+        generalErrorsContainer.className = 'uniform-contact__result--error';
+          resultMessageContainer.appendChild(generalErrorsContainer);
       } else {
         // Clear existing general errors
         generalErrorsContainer.innerHTML = '';
@@ -118,15 +133,10 @@ function contactForm(form) {
       // Add each error message
       generalErrors.forEach(function(error) {
         const errorDiv = document.createElement('div');
-        errorDiv.className = 'uniform-contact__error-message';
         errorDiv.innerHTML = error;
         generalErrorsContainer.appendChild(errorDiv);
       });
     }
-
-    // Clear the success message
-    successMessage.innerHTML = '';
-    successMessage.classList.remove('uniform-contact__result--success');
 
     // Flash the first error message for visibility
     const firstErrorMessage = form.querySelector('.uniform-contact__error-message');
@@ -136,6 +146,9 @@ function contactForm(form) {
   }
 
   const onload = function (e) {
+    // Clear all error messages
+    clearAllErrorMessages();
+
     const response = JSON.parse(e.target.response);
     if (e.target.status === 200) {
       const messages = [];
@@ -144,13 +157,11 @@ function contactForm(form) {
         Array.prototype.push.apply(messages, response[key]);
       }
       clearAllErrorMessages();
-      errorMessage.innerHTML = '';
-      errorMessage.classList.remove('uniform-contact__result--error');
-      successMessage.classList.add('uniform-contact__result--success');
-      successMessage.innerHTML = messages.join('<br>');
-      flashMessage(successMessage);
-      form.querySelector('.uniform-contact__js-message-modal').classList.remove('uniform-contact__js-hidden');
-      successClose.focus();
+      form.setAttribute('aria-hidden', 'true');
+      setTimeout(
+        confirmationPanel.setAttribute('aria-hidden', 'false')
+        , 500);
+      // closeButton.focus();
 
       form.querySelectorAll('.uniform-contact__input').forEach(function (input) {
         input.value = '';
@@ -186,16 +197,14 @@ function contactForm(form) {
       if (!fields.hasOwnProperty(key)) continue;
       fields[key].classList.remove('error');
     }
-    // Clear all error messages
-    clearAllErrorMessages();
   };
   form.addEventListener('submit', submit);
 }
 
 window.addEventListener('load', function () {
-  const forms = document.querySelectorAll('.uniform-contact__form');
+  const blocks = document.querySelectorAll('.uniform-contact');
   // for each form
-  forms.forEach(function (form) {
-    contactForm(form);
+  blocks.forEach(function (block) {
+    contactForm(block);
   });
 });

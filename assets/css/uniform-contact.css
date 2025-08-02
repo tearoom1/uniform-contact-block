@@ -3,9 +3,12 @@
   left: -9999px;
 }
 
-.uniform-contact__container {
-  position: relative;
+.uniform-contact {
   width: 100%;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
 
   --cf-default-color-success: #2f9f35;
   --cf-default-color-warning: #c87911;
@@ -26,7 +29,6 @@
   --grid-column-count: 2;
   --grid-item--min-width: 250px;
 
-
   .uniform-contact__form.uniform-contact__layout--one-column {
     --grid-column-count: 1;
   }
@@ -42,6 +44,35 @@
       min-height: 150px;
     }
   }
+
+  button {
+    /* prevent buttons to stay while transitioning between confirmation and form */
+    transition: none;
+  }
+}
+
+.uniform-contact__confirmation, .uniform-contact__form {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  transition: visibility 0s, opacity 0.3s ease-out;
+  opacity: 1;
+}
+
+.uniform-contact__confirmation[aria-hidden="true"],
+.uniform-contact__form[aria-hidden="true"],
+.uniform-contact__result[aria-hidden="true"] {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.uniform-contact__confirmation {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
 }
 
 .uniform-contact__theme--basic {
@@ -50,17 +81,8 @@
     margin-inline-start: var(--cf-padding-1);
   }
 
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="search"],
-  input[type="url"],
-  input[type="tel"],
-  input[type="number"],
-  input[type="date"],
-  button[type="submit"],
-  textarea,
-  select {
+  input,
+  textarea {
     border: 1px solid var(--cf-color-accent, var(--cf-default-color-accent));
     padding: var(--cf-padding-1) var(--cf-padding-2);
     border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
@@ -75,14 +97,14 @@
     resize: vertical;
   }
 
-  button[type="submit"] {
+  button {
     background-color: var(--cf-color-accent, var(--cf-default-color-accent));
     color: var(--cf-color-background, var(--cf-default-color-background));
     border: 1px solid var(--cf-color-background, var(--cf-default-color-background));
     transition: all 0.5s;
   }
 
-  button[type="submit"]:hover {
+  button:hover {
     color: var(--cf-color-accent, var(--cf-default-color-accent));
     background-color: var(--cf-color-background, var(--cf-default-color-background));
     border: 1px solid var(--cf-color-accent, var(--cf-default-color-accent));
@@ -209,44 +231,6 @@
     font-size: 90%;
   }
 
-  .uniform-contact__result {
-    width: 100%;
-    text-align: center;
-    transition: all 0.5s;
-    margin-top: var(--cf-padding-1);
-  }
-
-  .uniform-contact__js-message-modal {
-    position: absolute;
-    display: grid;
-    transition: visibility 0s, opacity 0.5s linear;
-    background: var(--cf-color-background, var(--cf-default-color-background));
-    inset: -5px;
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
-    place-items: center;
-    z-index: 2;
-  }
-
-  .uniform-contact__js-hidden {
-    visibility: hidden;
-    opacity: 0.3;
-  }
-
-  .uniform-contact__result--success {
-    color: inherit;
-    text-align: center;
-  }
-
-  .uniform-contact__result--error {
-    display: inline-block;
-    color: white;
-    background: var(--cf-color-error, var(--cf-default-color-error));
-    border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
-    text-align: center;
-    padding: max(var(--cf-padding-1), 10px) max(var(--cf-padding-2), 20px);
-  }
-
   .uniform-contact__submit-btn {
     width: 100%;
   }
@@ -274,6 +258,23 @@
 
   .uniform-contact__result {
     grid-column: 1/-1;
+    width: 100%;
+    text-align: center;
+    margin-top: var(--cf-padding-1);
+
+    .uniform-contact__result--success {
+      color: inherit;
+      text-align: center;
+    }
+
+    .uniform-contact__result--error {
+      display: inline-block;
+      color: white;
+      background: var(--cf-color-error, var(--cf-default-color-error));
+      border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
+      text-align: center;
+      padding: max(var(--cf-padding-1), 10px) max(var(--cf-padding-2), 20px);
+    }
   }
 }
 

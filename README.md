@@ -164,8 +164,7 @@ It uses the following css variables that can be overwritten in your own styleshe
 --cf-color-warning
 --cf-color-error
 --cf-color-accent
-
---cf-color-background /* needed for modal background */
+--cf-color-background
 --cf-color-spinner
 
 --cf-border-radius
