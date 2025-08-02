@@ -1,3 +1,10 @@
+## [3.2.3](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.2...v3.2.3) (2025-08-02)
+
+
+### Bug Fixes
+
+* removed console log ([6088510](https://github.com/tearoom1/uniform-contact-block/commit/60885102a53922bf9334311594efb16c234ea329))
+
 ## [3.2.2](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.1...v3.2.2) (2025-08-02)
 
 
@@ -25,11 +32,4 @@
 ### Bug Fixes
 
 * updated composer and autoloading ([97739ba](https://github.com/tearoom1/uniform-contact-block/commit/97739bab49887693885360f22204d5e6dffca3d2))
-
-## [3.1.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.0.3...v3.1.0) (2025-08-01)
-
-
-### Features
-
-* show error messages next to input fields ([8c25a9d](https://github.com/tearoom1/uniform-contact-block/commit/8c25a9d5b8f0d3417edbfcafa5ee106f9fe6b700))
 
