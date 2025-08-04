@@ -26,6 +26,12 @@ The panel block allows adjustments of the labels of the form.
 
 Use one of the following methods to install & use `tearoom1/uniform-contact-block`:
 
+### Composer
+
+```text
+composer require tearoom1/uniform-contact-block
+```
+
 ### Git submodule
 
 If you know your way around Git, you can download this plugin as
@@ -35,16 +41,12 @@ a [submodule](https://github.com/blog/2104-working-with-submodules):
 git submodule add https://github.com/tearoom1/uniform-contact-block.git site/plugins/uniform-contact-block
 ```
 
-### Composer
-
-```text
-composer require tearoom1/uniform-contact-block
-```
-
 ### Clone or download
 
 1. Clone or download this repository from github: https://github.com/tearoom1/uniform-contact-block.git
 2. Unzip / Move the folder to `site/plugins`.
+
+> If you install the plugin without composer, you have to manually install the dependencies (see below)
 
 ## Dependencies
 
