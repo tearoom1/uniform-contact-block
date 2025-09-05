@@ -43,6 +43,11 @@
     .uniform-contact__message textarea {
       min-height: 150px;
     }
+
+    .uniform-contact__captcha-image img {
+      height: 3rem;
+      object-fit: cover;
+    }
   }
 
   button {
@@ -149,6 +154,13 @@
     margin: 0;
   }
 
+  .uniform-contact__message textarea {
+    width: auto;
+    resize: block;
+    height: 4lh;
+    box-sizing: content-box;
+  }
+
   .uniform-contact__input:focus {
     outline-color: var(--cf-color-accent, var(--cf-default-color-accent));
     border-color: var(--cf-color-accent, var(--cf-default-color-accent));
@@ -210,6 +222,7 @@
 
   .uniform-contact__captcha-image img {
     border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
+    margin: 2px 0 0 2px;
   }
 
   .uniform-contact__captcha-wrapper {
