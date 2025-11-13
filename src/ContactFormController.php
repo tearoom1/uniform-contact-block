@@ -33,19 +33,11 @@ class ContactFormController
             ],
         ]);
 
-        if (option('debug')) {
-            if ($form->data('message') === 'error') {
-                throw new Exception('Test Error');
-            } else if ($form->data('message') === 'test') {
-                if (!$ajax) {
-                    $form = new Form();
-                    $form->validate();
-                    $form->done();
-                } else {
-                    return [[], 200];
-                }
-            }
+        if (option('debug') && $form->data('message') === 'error') {
+            throw new Exception('Test Error');
         }
+
+        $bypassBaseChecks = option('debug') && strpos($form->data('message'), 'test') !== false;
 
         if ($ajax) {
             // Perform validation and execute guards.
@@ -53,10 +45,12 @@ class ContactFormController
                 ->withoutRedirect();
         }
 
-        $form
-            ->simplecaptchaGuard()
-            ->honeypotGuard()
-            ->spamWordsGuard();
+        if (!$bypassBaseChecks) {
+            $form->simplecaptchaGuard();
+            $form->honeypotGuard();
+        }
+
+        $form->spamWordsGuard();
 
         if (option('uniform.honeytime.key') !== null) {
             $form->honeytimeGuard(['key' => option('uniform.honeytime.key')]);
