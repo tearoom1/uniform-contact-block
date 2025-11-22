@@ -233,6 +233,10 @@
     gap: var(--cf-gap, var(--cf-default-gap));
   }
 
+  .uniform-contact__captcha-reload {
+    cursor: pointer;
+  }
+
   .uniform-contact__captcha-input {
     flex-grow: 1;
   }
