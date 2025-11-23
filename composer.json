@@ -1,52 +1,52 @@
 {
-    "name": "tearoom1/uniform-contact-block",
-    "description": "Kirby plugin for a uniform based contact form block",
-    "license": "MIT",
-    "type": "kirby-plugin",
-    "homepage": "https://github.com/tearoom1/uniform-contact-block",
-    "version": "3.2.4",
-    "keywords": [
-        "kirby",
-        "form",
-        "block"
-    ],
-    "authors": [
-        {
-            "name": "Mathis Koblin",
-            "email": "mail@tearoom.one",
-            "homepage": "https://www.tearoom.one",
-            "role": "Maintainer"
-        }
-    ],
-    "support": {
-        "docs": "https://github.com/tearoom1/uniform-contact-block/blob/main/README.md",
-        "source": "https://github.com/tearoom1/uniform-contact-block"
+  "name": "tearoom1/uniform-contact-block",
+  "description": "Kirby plugin for a uniform based contact form block",
+  "license": "MIT",
+  "type": "kirby-plugin",
+  "homepage": "https://github.com/tearoom1/uniform-contact-block",
+  "version": "3.2.5",
+  "keywords": [
+    "kirby",
+    "form",
+    "block"
+  ],
+  "authors": [
+    {
+      "name": "Mathis Koblin",
+      "email": "mail@tearoom.one",
+      "homepage": "https://www.tearoom.one",
+      "role": "Maintainer"
+    }
+  ],
+  "support": {
+    "docs": "https://github.com/tearoom1/uniform-contact-block/blob/main/README.md",
+    "source": "https://github.com/tearoom1/uniform-contact-block"
+  },
+  "require": {
+    "getkirby/composer-installer": "^1.1",
+    "mzur/kirby-uniform": "^5.6",
+    "refbw/uniform-simple-captcha": "^2.1",
+    "tearoom1/uniform-spam-words": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "TearoomOne\\UniformContactBlock\\": "src/"
+    }
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "allow-plugins": {
+      "getkirby/composer-installer": true
+    }
+  },
+  "funding": [
+    {
+      "type": "Buy me a coffee",
+      "url": "https://buymeacoffee.com/tearoom1"
     },
-    "require": {
-        "getkirby/composer-installer": "^1.1",
-        "mzur/kirby-uniform": "^5.6",
-        "refbw/uniform-simple-captcha": "^2.1",
-        "tearoom1/uniform-spam-words": "^1.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "TearoomOne\\UniformContactBlock\\": "src/"
-        }
-    },
-    "config": {
-        "optimize-autoloader": true,
-        "allow-plugins": {
-            "getkirby/composer-installer": true
-        }
-    },
-    "funding": [
-        {
-            "type": "Buy me a coffee",
-            "url": "https://buymeacoffee.com/tearoom1"
-        },
-        {
-            "type": "Github Sponsors",
-            "url": "https://github.com/sponsors/tearoom1"
-        }
-    ]
+    {
+      "type": "Github Sponsors",
+      "url": "https://github.com/sponsors/tearoom1"
+    }
+  ]
 }
