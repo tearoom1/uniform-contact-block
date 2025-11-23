@@ -139,7 +139,7 @@ $showForm = !$form->success();
             ?>
             <?php if ($block->privacyNote()->isNotEmpty()): ?>
                 <div class="uniform-contact__privacy">
-                    <?= $block->privacyNote() ?>
+                    <?= $block->privacyNote()->permalinksToUrls() ?>
                 </div>
             <?php endif ?>
             <button class="uniform-contact__submit-btn" type="submit">
