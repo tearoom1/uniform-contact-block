@@ -22,7 +22,7 @@
   --cf-default-padding: 0.5rem;
 
   --cf-padding-1: var(--cf-padding, var(--cf-default-padding));
-  --cf-padding-2: calc(var(--cf-padding, var(--cf-default-padding)) * 2);
+  --cf-padding-2: calc(var(--cf-padding, var(--cf-default-padding)) * 1.5);
   --cf-padding-3: calc(var(--cf-padding, var(--cf-default-padding)) * 3);
 
   --grid-layout-gap: var(--cf-gap, var(--cf-default-gap));
@@ -42,11 +42,6 @@
 
     .uniform-contact__message textarea {
       min-height: 150px;
-    }
-
-    .uniform-contact__captcha-image img {
-      height: 3rem;
-      object-fit: cover;
     }
   }
 
@@ -87,14 +82,19 @@
   }
 
   input,
-  textarea {
+  textarea,
+  button {
     border: 1px solid var(--cf-color-accent, var(--cf-default-color-accent));
     padding: var(--cf-padding-1) var(--cf-padding-2);
-    border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
 
     &:focus {
       border-color: var(--cf-color-accent, var(--cf-default-color-accent));
     }
+  }
+
+  input,
+  textarea {
+    border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
   }
 
   textarea {
@@ -105,7 +105,7 @@
   button {
     background-color: var(--cf-color-accent, var(--cf-default-color-accent));
     color: var(--cf-color-background, var(--cf-default-color-background));
-    border: 1px solid var(--cf-color-background, var(--cf-default-color-background));
+    border-radius: calc(var(--cf-border-radius, var(--cf-default-border-radius)) * 2);
     transition: all 0.5s;
   }
 
@@ -222,7 +222,6 @@
 
   .uniform-contact__captcha-image img {
     border-radius: var(--cf-border-radius, var(--cf-default-border-radius));
-    margin: 2px 0 0 2px;
   }
 
   .uniform-contact__captcha-wrapper {
