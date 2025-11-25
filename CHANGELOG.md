@@ -1,3 +1,10 @@
+## [3.3.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.5...v3.3.0) (2025-11-25)
+
+
+### Features
+
+* improved the basic theme ([988e9bc](https://github.com/tearoom1/uniform-contact-block/commit/988e9bc9bc2442dfe2fcdefde207906846fe0aec))
+
 ## [3.2.5](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.4...v3.2.5) (2025-11-23)
 
 
@@ -25,11 +32,4 @@
 ### Bug Fixes
 
 * improved errors and js and non-ajax handling ([2ed03e6](https://github.com/tearoom1/uniform-contact-block/commit/2ed03e68a7b620387dde6fac45cce48119ca93d1))
-
-## [3.2.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.0...v3.2.1) (2025-08-01)
-
-
-### Bug Fixes
-
-* default theme is unset ([0a0456d](https://github.com/tearoom1/uniform-contact-block/commit/0a0456db86e94cebbb51f21650b47e57191dd0e3))
 
