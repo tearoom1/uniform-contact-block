@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.3.0...v3.3.1) (2026-04-30)
+
+
+### Bug Fixes
+
+* allow names with spaces ([7148fca](https://github.com/tearoom1/uniform-contact-block/commit/7148fca7576635b6c632c46e98a47899e5da7305))
+
 ## [3.3.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.5...v3.3.0) (2025-11-25)
 
 
@@ -25,11 +32,4 @@
 ### Bug Fixes
 
 * removed console log ([6088510](https://github.com/tearoom1/uniform-contact-block/commit/60885102a53922bf9334311594efb16c234ea329))
-
-## [3.2.2](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.1...v3.2.2) (2025-08-02)
-
-
-### Bug Fixes
-
-* improved errors and js and non-ajax handling ([2ed03e6](https://github.com/tearoom1/uniform-contact-block/commit/2ed03e68a7b620387dde6fac45cce48119ca93d1))
 
