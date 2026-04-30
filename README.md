@@ -105,7 +105,7 @@ return [
         'formNameRequired' => true,
         'formEmailRequired' => true,
         'formMessageRequired' => true,
-        'formNamePattern' => '[^\s]{3,}',
+        'formNamePattern' => '(?=.*\S).{2,}',
         'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
         'theme' => 'basic', // default no theme, use 'basic' for a default theme
     ],
@@ -129,7 +129,7 @@ return [
 | `formNameRequired`    | `true`                     | Require the name field                                                  |
 | `formEmailRequired`   | `true`                     | Require the email field                                                 |
 | `formMessageRequired` | `true`                     | Require the message field                                               |
-| `formNamePattern`     | `[^\s]{3,}`                | Pattern for the name field                                              |
+| `formNamePattern`     | `(?=.*\S).{3,}`            | Pattern for the name field                                              |
 | `formEmailPattern`    | `[^\s@]+@[^\s@]+\.[^\s@]+` | Pattern for the email field                                             |
 | `theme`               |                            | Set to 'basic' for some basic styling                                   |
 

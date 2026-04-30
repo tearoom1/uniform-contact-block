@@ -18,7 +18,7 @@ Kirby::plugin('tearoom1/uniform-contact-block', [
         'formNameRequired' => true,
         'formEmailRequired' => true,
         'formMessageRequired' => true,
-        'formNamePattern' => '[^\s]{3,}',
+        'formNamePattern' => '(?=.*\S).{2,}',
         'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
         'theme' => '',
     ],
@@ -85,5 +85,3 @@ Kirby::plugin('tearoom1/uniform-contact-block', [
         ]
     ]
 ]);
-
-
