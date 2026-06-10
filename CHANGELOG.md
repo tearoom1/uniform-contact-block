@@ -1,3 +1,10 @@
+## [3.3.2](https://github.com/tearoom1/uniform-contact-block/compare/v3.3.1...v3.3.2) (2026-06-10)
+
+
+### Bug Fixes
+
+* make email escaping configurable ([0f36d0b](https://github.com/tearoom1/uniform-contact-block/commit/0f36d0b1a6989dce5621f25c98dbcee60b4d2124))
+
 ## [3.3.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.3.0...v3.3.1) (2026-04-30)
 
 
@@ -25,11 +32,4 @@
 ### Bug Fixes
 
 * reverted to use class loading in index.php ([a13e67f](https://github.com/tearoom1/uniform-contact-block/commit/a13e67f99dcf3864e674f13d8d319101d9e3997c))
-
-## [3.2.3](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.2...v3.2.3) (2025-08-02)
-
-
-### Bug Fixes
-
-* removed console log ([6088510](https://github.com/tearoom1/uniform-contact-block/commit/60885102a53922bf9334311594efb16c234ea329))
 
