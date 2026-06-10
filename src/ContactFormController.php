@@ -72,7 +72,7 @@ class ContactFormController
             'fromName' => option('tearoom1.uniform-contact-block.fromName') . ' ' . t('tearoom1.uniform-contact-block.title'),
             'replyTo' => $form->data('email'),
             'subject' => $subject,
-            'escapeHtml' => false
+            'escapeHtml' => option('tearoom1.uniform-contact-block.emailEscapeHtml', false)
         ])
             ->emailAction([
                 // Send the success email to the email address of the submitter.
@@ -83,7 +83,7 @@ class ContactFormController
                 'subject' => t('tearoom1.uniform-contact-block.subject_submitter'),
                 // Use a template for the email body (see below).
                 'template' => 'success_response_' . $lang,
-                'escapeHtml' => false
+                'escapeHtml' => option('tearoom1.uniform-contact-block.emailEscapeHtml', false)
             ]);
 
         if (!$ajax) {

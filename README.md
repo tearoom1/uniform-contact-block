@@ -107,6 +107,7 @@ return [
         'formMessageRequired' => true,
         'formNamePattern' => '(?=.*\S).{2,}',
         'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
+        'emailEscapeHtml' => false,
         'theme' => 'basic', // default no theme, use 'basic' for a default theme
     ],
     'uniform.honeytime' => [
@@ -131,6 +132,7 @@ return [
 | `formMessageRequired` | `true`                     | Require the message field                                               |
 | `formNamePattern`     | `(?=.*\S).{3,}`            | Pattern for the name field                                              |
 | `formEmailPattern`    | `[^\s@]+@[^\s@]+\.[^\s@]+` | Pattern for the email field                                             |
+| `emailEscapeHtml`     | `false`                    | Escape submitted form values before passing them to Uniform email bodies/templates |
 | `theme`               |                            | Set to 'basic' for some basic styling                                   |
 
 The option `alwaysIncludeAssets` determines whether the `uniform-contact/js` and `uniform-contact/css` snippets are
@@ -141,6 +143,14 @@ want to be avoided, depending on the setup.
 For the honeytime encryption key: You can generate one with the command `head -c 32 /dev/urandom | base64` and then
 append a base64: prefix.
 See also https://kirby-uniform.readthedocs.io/en/latest/guards/honeytime/
+
+### Email escaping
+
+The default email templates in this plugin are plain-text templates. For that reason, `emailEscapeHtml` defaults to
+`false`: submitted values arrive as readable plain text instead of HTML entities like `&lt;` and `&amp;`.
+
+If you replace the email templates with HTML templates or render submitted values as HTML, set
+`emailEscapeHtml` to `true` and escape any custom template output explicitly.
 
 And optional additional configuration for the included plugins. For example:
 

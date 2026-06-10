@@ -20,6 +20,7 @@ Kirby::plugin('tearoom1/uniform-contact-block', [
         'formMessageRequired' => true,
         'formNamePattern' => '(?=.*\S).{2,}',
         'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
+        'emailEscapeHtml' => false,
         'theme' => '',
     ],
     'blueprints' => [
