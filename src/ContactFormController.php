@@ -8,15 +8,42 @@ use Uniform\Form;
 
 class ContactFormController
 {
-    public static function contactFormSend($lang, $ajax = false): array
+    /**
+     * Validate the language code from the URL.
+     * Returns the code to use, null for single-language sites
+     * or false for codes that are no configured language.
+     */
+    public static function resolveLanguage(?string $lang): string|null|false
+    {
+        $kirby = kirby();
+
+        if ($kirby->multilang() === false) {
+            return $lang === null ? null : false;
+        }
+
+        if ($lang === null) {
+            return $kirby->defaultLanguage()?->code();
+        }
+
+        return $kirby->language($lang) !== null ? $lang : false;
+    }
+
+    public static function contactFormSend(?string $lang, bool $ajax = false): array
     {
 
         if (!option('tearoom1.uniform-contact-block.enabled', true)) {
             return [['message' => 'This plugin is disabled'], 400];
         }
 
+        $lang = self::resolveLanguage($lang);
+        if ($lang === false) {
+            return [['message' => 'Unknown language'], 404];
+        }
+
         // tell kirby to use lang
-        I18n::$locale = $lang;
+        if ($lang !== null) {
+            I18n::$locale = $lang;
+        }
 
         $form = new Form([
             'name' => [
@@ -66,15 +93,16 @@ class ContactFormController
         $subject = I18n::template('tearoom1.uniform-contact-block.subject', null, [
             'name' => $name
         ]);
-        $form->emailAction([
+        $form = $form->emailAction([
             'to' => option('tearoom1.uniform-contact-block.toEmail'),
             'from' => option('tearoom1.uniform-contact-block.fromEmail'),
             'fromName' => option('tearoom1.uniform-contact-block.fromName') . ' ' . t('tearoom1.uniform-contact-block.title'),
             'replyTo' => $form->data('email'),
             'subject' => $subject,
             'escapeHtml' => option('tearoom1.uniform-contact-block.emailEscapeHtml', false)
-        ])
-            ->emailAction([
+        ]);
+
+        $form->emailAction([
                 // Send the success email to the email address of the submitter.
                 'to' => $form->data('email'),
                 'replyTo' => option('tearoom1.uniform-contact-block.fromEmail'),
@@ -82,7 +110,7 @@ class ContactFormController
                 'fromName' => option('tearoom1.uniform-contact-block.fromName'),
                 'subject' => t('tearoom1.uniform-contact-block.subject_submitter'),
                 // Use a template for the email body (see below).
-                'template' => 'success_response_' . $lang,
+                'template' => self::confirmationTemplate($lang),
                 'escapeHtml' => option('tearoom1.uniform-contact-block.emailEscapeHtml', false)
             ]);
 
@@ -96,5 +124,18 @@ class ContactFormController
         }
 
         return [['message' => [t('tearoom1.uniform-contact-block.successMessage')]], 200];
+    }
+
+    /**
+     * Email template for the confirmation, falling back to English
+     * for languages without their own template.
+     */
+    public static function confirmationTemplate(?string $lang): string
+    {
+        $template = 'success_response_' . ($lang ?? 'en');
+
+        return kirby()->template('emails/' . $template)->exists()
+            ? $template
+            : 'success_response_en';
     }
 }

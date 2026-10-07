@@ -58,12 +58,11 @@ git submodule add https://github.com/tearoom1/uniform-contact-block.git site/plu
 > Note: Check the corresponding documentation for further information and required configuration.
 > Specifically the uniform.honeytime guard from kirby-uniform is used and needs configuration in your `config.php`
 
-## Multi language requirement
+## Languages
 
-This plugin requires a Kirby multi-language setup. It uses routes that expect the language code as the first segment of
-the URL.
-It can easily be stripped down to a single language setup by removing the language code from the routes and a few
-adjustments.
+The plugin works with single- and multi-language sites. On multi-language sites the form posts to
+`/<language>/uniform-contact`, only configured languages are accepted. The confirmation email uses the template
+`success_response_<language>` and falls back to English for languages without their own template.
 
 ## Usage
 

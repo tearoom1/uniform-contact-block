@@ -69,16 +69,21 @@ Kirby::plugin('tearoom1/uniform-contact-block', [
             }
         ],
         [
-            'pattern' => '(:any)/uniform-contact',
+            // with language prefix (multi-language) or without (single-language)
+            'pattern' => ['(:any)/uniform-contact', 'uniform-contact'],
             'method' => 'POST',
-            'action' => function ($lang) {
+            'action' => function ($lang = null) {
+                if (ContactFormController::resolveLanguage($lang) === false) {
+                    return false;
+                }
+
                 ContactFormController::contactFormSend($lang);
             }
         ],
         [
-            'pattern' => '(:any)/uniform-contact-ajax',
+            'pattern' => ['(:any)/uniform-contact-ajax', 'uniform-contact-ajax'],
             'method' => 'POST',
-            'action' => function ($lang) {
+            'action' => function ($lang = null) {
                 [$messages, $code] = ContactFormController::contactFormSend($lang, true);
 
                 return \Kirby\Cms\Response::json($messages, $code);

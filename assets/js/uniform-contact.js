@@ -25,11 +25,13 @@ function contactForm(block) {
     fields[field.name] = field;
   });
 
+  const captchaUrl = form.dataset.captchaUrl || '/uniform-contact-captcha';
+
   const reloadButton = form.querySelector('.uniform-contact__captcha-reload');
   reloadButton.addEventListener('click', function (e) {
     e.preventDefault();
     const captcha = form.querySelector('.uniform-contact__captcha-image');
-    fetch('/uniform-contact-captcha').then(function (response) {
+    fetch(captchaUrl).then(function (response) {
       return response.text();
     }).then(function (text) {
       captcha.innerHTML = text;
@@ -172,7 +174,7 @@ function contactForm(block) {
       // reload the captcha
       const captcha = form.querySelector('.uniform-contact__captcha-image');
 
-      fetch('/uniform-contact-captcha').then(function (response) {
+      fetch(captchaUrl).then(function (response) {
         return response.text();
       }).then(function (text) {
         captcha.innerHTML = text;

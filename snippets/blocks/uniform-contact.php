@@ -7,7 +7,9 @@
 if (!option('tearoom1.uniform-contact-block.enabled', true)) {
     return;
 }
-$lang = $kirby->currentLanguage()->code();
+// Single-language sites have no language code in the form URL
+$lang = $kirby->multilang() ? $kirby->language()?->code() : null;
+$actionUrl = url(($lang ? $lang . '/' : '') . 'uniform-contact');
 $form = new \Uniform\Form();
 $showForm = !$form->success();
 ?>
@@ -26,7 +28,8 @@ $showForm = !$form->success();
 
     <form id="uniform-contact__form-<?= $block->id() ?>"
           class="uniform-contact__form uniform-contact__layout--<?= $block->layout() ?>"
-          action="/<?= $lang ?>/uniform-contact" method="POST"
+          action="<?= $actionUrl ?>" method="POST"
+          data-captcha-url="<?= url('uniform-contact-captcha') ?>"
           aria-hidden="<?= $showForm ? 'false' : 'true' ?>"
         <?= option('tearoom1.uniform-contact-block.formBrowserValidate', 'validate') ?>>
         <?= csrf_field(); ?>
