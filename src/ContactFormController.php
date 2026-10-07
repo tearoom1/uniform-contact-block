@@ -102,7 +102,10 @@ class ContactFormController
             'escapeHtml' => option('tearoom1.uniform-contact-block.emailEscapeHtml', false)
         ]);
 
-        $form->emailAction([
+        // The confirmation goes to the submitted address. It can be disabled
+        // so the form can't be used to send mails to arbitrary recipients.
+        if (option('tearoom1.uniform-contact-block.confirmationEmail', true)) {
+            $form->emailAction([
                 // Send the success email to the email address of the submitter.
                 'to' => $form->data('email'),
                 'replyTo' => option('tearoom1.uniform-contact-block.fromEmail'),
@@ -113,6 +116,7 @@ class ContactFormController
                 'template' => self::confirmationTemplate($lang),
                 'escapeHtml' => option('tearoom1.uniform-contact-block.emailEscapeHtml', false)
             ]);
+        }
 
         if (!$ajax) {
             $form->done();

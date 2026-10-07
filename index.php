@@ -21,6 +21,7 @@ Kirby::plugin('tearoom1/uniform-contact-block', [
         'formNamePattern' => '(?=.*\S).{2,}',
         'formEmailPattern' => '[^\s@]+@[^\s@]+\.[^\s@]+',
         'emailEscapeHtml' => false,
+        'confirmationEmail' => true,
         'theme' => '',
     ],
     'blueprints' => [
