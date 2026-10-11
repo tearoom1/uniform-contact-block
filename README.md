@@ -9,7 +9,7 @@ It also has the uniform honeypot and honeytime guards enabled by default.
 
 The panel block allows adjustments of the labels of the form.
 
-[![Screenshot](screenshot.jpg)](https://github.com/tearoom1/kirby-content-watch)
+[![Screenshot](screenshot.jpg)](https://github.com/tearoom1/uniform-contact-block)
 
 ***
 
@@ -206,3 +206,12 @@ This plugin is licensed under the [MIT License](LICENSE)
 - Developed by Mathis Koblin
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://coff.ee/tearoom1)
+
+## Screenshots
+
+Screenshots use fictional Cedar & Leaf sample content at 1600 × 902 pixels. The main image uses the light theme.
+
+| View | Light | Dark |
+| --- | --- | --- |
+| Overview | [Light](screenshot.jpg) | [Dark](screenshot-dark.jpg) |
+| Panel block settings | [Light](docs/screenshots/panel-block.jpg) | [Dark](docs/screenshots/panel-block-dark.jpg) |
