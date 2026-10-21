@@ -3,6 +3,7 @@
 namespace TearoomOne\UniformContactBlock\Tests;
 
 use Kirby\Email\Email;
+use PHPUnit\Framework\Attributes\DataProvider;
 use TearoomOne\UniformContactBlock\ContactFormController;
 
 /**
@@ -25,6 +26,50 @@ class ContactFormTest extends TestCase
 
         $this->assertSame(['jane@example.test'], array_keys($confirmation->to()));
         $this->assertStringContainsString('Jane Doe', $confirmation->body()->text());
+    }
+
+    public function testLinksInTheNameDoNotReachTheConfirmation(): void
+    {
+        $spam = 'Cheap pills at https://spam.example/buy and www.spam.example or spam.example';
+        [, $code] = $this->submit(array_merge($this->validMessage(), ['name' => $spam]));
+
+        $this->assertSame(200, $code);
+        [$toOwner, $confirmation] = Email::$emails;
+        // you still see what was entered
+        $this->assertStringContainsString('https://spam.example/buy', $toOwner->subject());
+        // the address that receives the confirmation does not
+        $text = $confirmation->body()->text();
+        $this->assertStringNotContainsString('spam.example', $text);
+        $this->assertStringNotContainsString('http', $text);
+        $this->assertStringContainsString('Cheap pills at', $text);
+    }
+
+    public function testLongNamesAreShortenedInTheConfirmation(): void
+    {
+        [, $code] = $this->submit(array_merge($this->validMessage(), ['name' => str_repeat('Advertisement ', 20)]));
+
+        $this->assertSame(200, $code);
+        preg_match('/Dear (.*),/', Email::$emails[1]->body()->text(), $m);
+        $this->assertLessThanOrEqual(50, mb_strlen($m[1]));
+    }
+
+    public static function names(): array
+    {
+        return [
+            'plain' => ['Jane Doe', 'Jane Doe'],
+            'accents' => ['Zoë Ångström-Müller', 'Zoë Ångström-Müller'],
+            'email' => ['Jane jane@spam.example', 'Jane'],
+            'markup' => ['<b>Jane</b>', 'Jane'],
+            'only a link' => ['https://spam.example', ''],
+            'title with dot' => ['Dr. Jane Smith', 'Dr. Jane Smith'],
+            'initials' => ['J. R. R. Tolkien', 'J. R. R. Tolkien'],
+        ];
+    }
+
+    #[DataProvider('names')]
+    public function testConfirmationName(string $input, string $expected): void
+    {
+        $this->assertSame($expected, ContactFormController::confirmationName($input));
     }
 
     public function testConfirmationCanBeTurnedOff(): void

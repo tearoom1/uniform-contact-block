@@ -133,7 +133,7 @@ return [
 | `formNamePattern`     | `(?=.*\S).{3,}`            | Pattern for the name field                                              |
 | `formEmailPattern`    | `[^\s@]+@[^\s@]+\.[^\s@]+` | Pattern for the email field                                             |
 | `emailEscapeHtml`     | `false`                    | Escape submitted form values before passing them to Uniform email bodies/templates |
-| `confirmationEmail`   | `true`                     | Send a confirmation email to the submitter. Disable it to prevent the form from being used to send emails to arbitrary addresses |
+| `confirmationEmail`   | `true`                     | Send a confirmation email to the submitter. Disable it to prevent the form from being used to send emails to arbitrary addresses. The name in the confirmation is cleaned (no links, email addresses or markup, at most 50 characters); the mail to you keeps the name as entered |
 | `theme`               |                            | Set to 'basic' for some basic styling                                   |
 
 The option `alwaysIncludeAssets` determines whether the `uniform-contact/js` and `uniform-contact/css` snippets are

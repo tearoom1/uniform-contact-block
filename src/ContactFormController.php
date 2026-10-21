@@ -105,6 +105,9 @@ class ContactFormController
         // The confirmation goes to the submitted address. It can be disabled
         // so the form can't be used to send mails to arbitrary recipients.
         if (option('tearoom1.uniform-contact-block.confirmationEmail', true)) {
+            // Whoever fills in the form controls the name, so it must not carry
+            // links or long texts to that address (the mail above keeps the original)
+            $form->data('name', self::confirmationName($name) ?: ' ');
             $form->emailAction([
                 // Send the success email to the email address of the submitter.
                 'to' => $form->data('email'),
@@ -128,6 +131,22 @@ class ContactFormController
         }
 
         return [['message' => [t('tearoom1.uniform-contact-block.successMessage')]], 200];
+    }
+
+    /**
+     * The submitted name as it may appear in the confirmation: without markup,
+     * links and email addresses, at most 50 characters
+     */
+    public static function confirmationName(string $name): string
+    {
+        $name = strip_tags($name);
+        $name = preg_replace('~\b(?:https?://|www\.)\S*~iu', ' ', $name);
+        $name = preg_replace('~\S+@\S+~u', ' ', $name);
+        // bare domains like spam.example or spam.example/path
+        $name = preg_replace('~\b[\p{L}\p{N}-]+(?:\.[\p{L}\p{N}-]+)*\.[a-z]{2,}\b\S*~iu', ' ', $name);
+        $name = trim(preg_replace('~[\s\p{C}]+~u', ' ', $name));
+
+        return mb_strlen($name) > 50 ? rtrim(mb_substr($name, 0, 50)) : $name;
     }
 
     /**
