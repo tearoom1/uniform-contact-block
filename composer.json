@@ -37,10 +37,25 @@
       "TearoomOne\\UniformContactBlock\\": "src/"
     }
   },
+  "require-dev": {
+    "getkirby/cms": "^4.0 || ^5.0",
+    "phpunit/phpunit": "^11.0"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TearoomOne\\UniformContactBlock\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit"
+  },
   "config": {
     "optimize-autoloader": true,
     "allow-plugins": {
       "getkirby/composer-installer": true
+    },
+    "platform": {
+      "php": "8.2.0"
     }
   },
   "funding": [
