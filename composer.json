@@ -60,6 +60,10 @@
   },
   "funding": [
     {
+      "type": "custom",
+      "url": "https://www.tearoom.one/en/kirby-plugins/support"
+    },
+    {
       "type": "Buy me a coffee",
       "url": "https://buymeacoffee.com/tearoom1"
     },
