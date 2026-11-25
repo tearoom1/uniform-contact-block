@@ -1,3 +1,15 @@
+## [3.5.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.4.1...v3.5.0) (2026-11-25)
+
+
+### Features
+
+* support Kirby 6 ([44eaba9](https://github.com/tearoom1/uniform-contact-block/commit/44eaba9f1cea21d694f23c8a783ce82b57e24677))
+
+
+### Bug Fixes
+
+* run the spam words guard last ([d740b0f](https://github.com/tearoom1/uniform-contact-block/commit/d740b0f1e64785a87be86d883b7f99661bf7a958))
+
 ## [3.4.1](https://github.com/tearoom1/uniform-contact-block/compare/v3.4.0...v3.4.1) (2026-10-21)
 
 
@@ -30,11 +42,4 @@
 ### Bug Fixes
 
 * allow names with spaces ([7148fca](https://github.com/tearoom1/uniform-contact-block/commit/7148fca7576635b6c632c46e98a47899e5da7305))
-
-## [3.3.0](https://github.com/tearoom1/uniform-contact-block/compare/v3.2.5...v3.3.0) (2025-11-25)
-
-
-### Features
-
-* improved the basic theme ([988e9bc](https://github.com/tearoom1/uniform-contact-block/commit/988e9bc9bc2442dfe2fcdefde207906846fe0aec))
 
