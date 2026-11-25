@@ -77,11 +77,12 @@ class ContactFormController
             $form->honeypotGuard();
         }
 
-        $form->spamWordsGuard();
-
         if (option('uniform.honeytime.key') !== null) {
             $form->honeytimeGuard(['key' => option('uniform.honeytime.key')]);
         }
+
+        // Last guard: its rate limit counts every message that reached it as sent
+        $form->spamWordsGuard();
 
         if (!$form->success()) {
             // Return validation errors.
