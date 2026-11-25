@@ -22,6 +22,11 @@ The panel block allows adjustments of the labels of the form.
 * Works with and without JS
 * Multiple guards already included and mostly ready to go
 
+## Requirements
+
+- Kirby 4, 5 or 6 (the PHP version your Kirby release requires)
+- [Kirby Uniform](https://github.com/mzur/kirby-uniform) 5.6 or newer
+
 ## Getting started
 
 Use one of the following methods to install & use `tearoom1/uniform-contact-block`:
