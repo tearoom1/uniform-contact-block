@@ -24,7 +24,12 @@ The panel block allows adjustments of the labels of the form.
 
 ## Requirements
 
-- Kirby 4, 5 or 6 (the PHP version your Kirby release requires)
+| Kirby | Plugin version | Branch |
+|---|---|---|
+| 6 | 3.5.0 or newer | `main` |
+| 4 and 5 | 3.x | `main` |
+
+- The PHP version your Kirby release requires
 - [Kirby Uniform](https://github.com/mzur/kirby-uniform) 5.6 or newer
 
 ## Getting started
