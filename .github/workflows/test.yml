@@ -21,6 +21,8 @@ jobs:
           - { php: '8.2', kirby: '^5.0' }
           - { php: '8.3', kirby: '^5.0' }
           - { php: '8.4', kirby: '^5.0' }
+          - { php: '8.3', kirby: '^6.0' }
+          - { php: '8.4', kirby: '^6.0' }
 
     name: PHP ${{ matrix.php }} / Kirby ${{ matrix.kirby }}
 
